@@ -1,0 +1,70 @@
+﻿Git commands
+
+git clone git://prolog.cs.vu.nl/home/pl/git/plweb.git
+git clone git://prolog.cs.vu.nl/home/pl/git/packages/clpqr.git
+
+http://www.swi-prolog.org/home/pl/git/pl-devel.git
+http://www.swi-prolog.org/git/packages/clpqr.git
+
+git config --global user.name "Uwe Lesta"
+git config --global user.email Lesta@SBS-Softwaresysteme.de
+
+cd D:/Lesta/swi-pl/pl/library/clp
+git status
+
+git commit -a --message="FIXED / CHANGED / ADDED: comment_text_here"
+
+git format-patch --root
+
+
+----------------------------------------------------------
+To run the web site localy:
+---------------------------
+
+----------------------------------------------------------
+mail from jan ( swi list ) from 02.02.2009 15:55
+----------------------------------------------------------
+Hi,
+
+I'm receiving many mails on gollem.science.uva.nl being down. This is
+related mainly to network hardware issues after the department moved to
+another building.
+
+I have found a more permanent and probably better maintained location at
+the prolog.cs.vu.nl.
+
+Status:
+
+	* GIT repositories have been moved to
+
+		- git://prolog.cs.vu.nl/home/pl/git/pl.git
+		- git://prolog.cs.vu.nl/home/pl/git/pl-57x.git
+
+	The host has changed and /home/pl/X.git --> /home/pl/git/X.git
+	This is now online and up-to-date and this will be the main
+	location of the gits from now on.
+	
+	To update, clone again or edit .git/config and change the url
+	for the `origin' remote.  You also need to update the submodules
+	and the submodule configs, so if you have a high-bandwidth link,
+	cloning might be easier.
+
+	For people with commit rights, I'll copy the accounts from 
+	gollem when I get access to them again.
+
+	* There is a new website at http://prolog.cs.vu.nl.  This site
+	actually runs on SWI-Prolog!  It still looks a bit ugly and not
+	all download files are there (I will copy them from gollem as
+	soon as this is up again).  I didn't plan to make it public yet,
+	but better an ugly site than no site.
+
+	Eventually, www.swi-prolog.org will simply redirect here.
+
+	* Bug-reporting is still on gollem (and thus unreachable for now).
+
+Unclear is what will happen to the wiki. I think the best is to move the
+interesting stuff to the new site and close it. The new website is in
+the git plweb.git, so you can run it locally, improve it and send me
+patches.
+
+	Cheers --- Jan

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SwiPlCs Copy of Microsoft All Rules" Description="All Rules without:    CA5122: P/Invoke declarations should not be safe-critical.    CA1303:Do not pass literals as localized parameters" ToolsVersion="11.0">
+  <IncludeAll Action="Warning" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1303" Action="None" />
+    <Rule Id="CA5122" Action="None" />
+  </Rules>
+</RuleSet>

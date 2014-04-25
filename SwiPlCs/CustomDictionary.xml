@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+see ´"How to: Customize the Code Analysis Dictionary"
+from: http://msdn.microsoft.com/en-us/library/bb514188.aspx
+-->
+<Dictionary>
+	<Words>
+		<Unrecognized>
+		</Unrecognized>
+		<Recognized>
+			<!-- global -->
+			<Word>Swi</Word>
+			<Word>Sbs</Word>
+			<Word>SwiPlCs</Word>
+			<!-- Prolog C interface -->
+			<Word>PL_halt</Word>
+			<Word>PL_get_arg</Word>
+			<Word>functor</Word>
+			<Word>Arity</Word>
+			<Word>argv</Word>
+			<Word>argc</Word>
+			<Word>cpu</Word>
+
+			<!-- DesignByContract -->
+		</Recognized>
+		<Deprecated>
+			<Term PreferredAlternate=""></Term>
+		</Deprecated>
+		<Compound>
+			<Term CompoundAlternate=""></Term>
+		</Compound>
+		<DiscreteExceptions>
+			<Term></Term>
+		</DiscreteExceptions>
+	</Words>
+	<Acronyms>
+		<CasingExceptions>
+			<Acronym>Swi</Acronym>
+			<Acronym>Sbs</Acronym>
+			<Acronym>Pl</Acronym>
+			<Acronym>Cpp</Acronym>
+			<Acronym>Cs</Acronym>
+			<Acronym>Mt</Acronym>
+			<Acronym>Var</Acronym>
+		</CasingExceptions>
+	</Acronyms>
+</Dictionary>

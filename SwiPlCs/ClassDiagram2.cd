@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SbsSW.SwiPlCs.Exceptions.PlLibException" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.Exceptions.PlException" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAVAAAAAAAgAAAAAAAAEQAIIAAAAAA=</HashCode>
+      <FileName>Exceptions.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlTypeException" Collapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlDomainException" Collapsed="true">
+    <Position X="9.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlTermVDomainException" Collapsed="true">
+    <Position X="12" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlTermV" Collapsed="true">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAwAAACAAAAAAAAAAAIAAAAAAAAAIAAAA=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlFrame" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAABAAAIAAAAAAAAAAAAI=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlQuery" BaseTypeListCollapsed="true">
+    <Position X="1" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBAMBABACAAQAAAACAAAAIAEAAAAAgAICwACIAEAEI=</HashCode>
+      <FileName>SWI-cs-PlQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PrologServer" Collapsed="true">
+    <Position X="4.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAABAAAAAA=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlEngine" Collapsed="true">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAgQAEBAABQAAACCAgAgAAAEAAAAgAAAABAEAAQA=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.PlMtEngine" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAICAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAII=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.libpl" Collapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="SbsSW.SwiPlCs.libpl.StreamsFunction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>LibPl.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>NHiTRphDktGgJkBiR4jXBwCQIwgamDID1ykgqyIkWoA=</HashCode>
+      <FileName>LibPl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.SafeLibraryHandle">
+    <Position X="12.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NativeMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.NativeMethods">
+    <Position X="9.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAQAAAAAAAAQAAQAAAAAA=</HashCode>
+      <FileName>NativeMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SbsSW.SwiPlCs.SafeNativeMethods">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="SbsSW.SwiPlCs.SafeNativeMethods.MIOSTREAM" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>NativeMethods.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>NCgBRpgBgNGgCABkBIjSBwCQAAgaiDIBlwkgKyAEGoA=</HashCode>
+      <FileName>NativeMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="SbsSW.SwiPlCs.PlTerm" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgJBiEAEEAAABlQMiASQCgSAigAECYJEIAgABRCABzg=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Enum Name="SbsSW.SwiPlCs.PlType" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABCAAAAAAAAACAAAAAAAAAAAACAAAACAAAAIAAAAAAg=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SbsSW.SwiPlCs.Callback.PlForeignSwitches" Collapsed="true">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAAAAAAAAIAAAAAgAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>SWI-cs.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
