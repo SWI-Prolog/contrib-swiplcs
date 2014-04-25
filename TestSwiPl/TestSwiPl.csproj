@@ -71,7 +71,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug64|AnyCPU'">
     <OutputPath>bin\Debug64\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;_PL_X64</DefineConstants>
     <Optimize>false</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -147,12 +147,6 @@
     <None Include="RunTests.bat" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SwiPlCs\SwiPLcs.csproj">
-      <Project>{60B9C0D5-B0BB-452D-832F-12DED90CCD67}</Project>
-      <Name>SwiPLcs</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
@@ -176,6 +170,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Test References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SwiPlCs\SwiPLcs.csproj">
+      <Project>{60b9c0d5-b0bb-452d-832f-12ded90ccd67}</Project>
+      <Name>SwiPLcs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

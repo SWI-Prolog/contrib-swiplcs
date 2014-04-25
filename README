@@ -1,11 +1,11 @@
 ﻿
 			An interface from .Net languages to SWI-Prolog
 
-This is a .Net (CSharp) interface to SWI-Prolog. The described interface provides a 
-layer around the C-interface for natural programming from C#. The interface deals 
-with automatic type-conversion to and from Prolog, mapping of exceptions and making 
-queries to Prolog in an easy way. There is a call-back from Prolog to C#. 
-
+This library is a .Net (CSharp) interface to SWI-Prolog. The described  
+interface provides a layer around the C-interface for natural programming from C#. 
+The interface deals with automatic type-conversion to and from Prolog, mapping of
+exceptions and making queries to Prolog in an easy way. There is a call-back from 
+Prolog to C#. 
 
 AUTHOR
 ======
@@ -17,32 +17,33 @@ AUTHOR
 
 		E-mail:  Lesta@sbs-softwaresysteme.de 
 
+		With contributions from:
+		- Arne Skjærholt	first 64-Bit version
+		- Batu Akan			Linux support with Mono
+		- Foutelet Joel		F# sample
+		- Robert Czerny		Bug reports
+		- others
+
 WEB-HOME
 ========
 
 		http://www.lesta.de/prolog/swiplcs/Generated/Index.aspx
 
-
-
 ------------------------------------------------------------------------------
 
+To work with Visual Studio install 'Visual Studio Tools for Git' 
+in the Tools - 'Extentions and Updates' menue and connect to 
+https://github.com/SWI-Prolog/contrib-swiplcs
+
+Add the following lines to .git\info\exlude if you like to commit something
+*.sdf
+*.opensdf
 
 SWI_HOME_DIR has to be set as an environment variable to the SWI-Prolog installation Path.
 
+64-Bit
+------
+To run the test on a 64-Bit environment got to the Test menu 
+- 'Test settings' - 'Default Processor Architecture' - chose X64
 
-The Project entry 'DesignByContract.cs' is a reference to 
-'..\library\DesignByContract\DesignByContract.cs'
-in the original project.
-
-So if you have a copy, simply remove this entry an add the file again.
-
-
-On Code Analyses you get: CA5122    P/Invoke declarations should not be safe-critical.    P/Invoke method '....
-
-see: "Bogus CA5122 warning about P/Invoke declarations should not be safe-critical"
-at  http://connect.microsoft.com/VisualStudio/feedback/details/729254/bogus-ca5122-warning-about-p-invoke-declarations-should-not-be-safe-critical
-
-The same for CA2204 
-see "CA2204 : Correct the spelling of the unrecognized token... even for tokens in dictionary"
-at http://connect.microsoft.com/VisualStudio/feedback/details/521030/ca2204-correct-the-spelling-of-the-unrecognized-token-even-for-tokens-in-dictionary
 
