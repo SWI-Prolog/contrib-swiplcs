@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DAADC26F-8B27-4887-B296-DE5DCEE0A5C3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SwiPlCs_Documentation</RootNamespace>
+    <AssemblyName>SwiPlCs-Documentation</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <PublishDatabases>false</PublishDatabases>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release64|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Generated\CloseSearch.png" />
+    <Content Include="Generated\CollapseAll.bmp" />
+    <Content Include="Generated\Collapsed.gif" />
+    <Content Include="Generated\ExpandAll.bmp" />
+    <Content Include="Generated\Expanded.gif" />
+    <Content Include="Generated\FillNode.aspx" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException_GetObjectData.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException_PlThrow.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException_Throw.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException_ToString.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException__ctor_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException__ctor_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException__ctor_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException__ctor_4.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlLibException_GetObjectData.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlLibException__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlLibException__ctor_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlLibException__ctor_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlLibException__ctor_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor_4.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor_5.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_Initialize.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_PlCleanup.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_PlHalt.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_PlThreadAttachEngine.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_PlThreadDestroyEngine.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_PlThreadSelf.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_RegisterForeign.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_RegisterForeign_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_RegisterForeign_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_RegisterForeign_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlFrame_Dispose.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlFrame_Finalize.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlFrame_Rewind.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlFrame__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_Dispose.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_Dispose_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_Finalize.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_NextSolution.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_PlCall.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_PlCallQuery.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_PlCallQuery_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_PlCall_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_PlCall_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery__ctor_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery__ctor_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV__ctor_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV__ctor_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV__ctor_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV__ctor_4.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_Add.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_AddList.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_Append.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_Close.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_CompareTo.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_Equals.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_GetEnumerator.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_GetHashCode.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_NextValue.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Equality.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Equality_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Equality_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Equality_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Equality_4.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Explicit.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Explicit_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Explicit_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_GreaterThan.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_GreaterThanOrEqual.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Inequality.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Inequality_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Inequality_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Inequality_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_Inequality_4.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_LessThan.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_op_LessThanOrEqual.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlCharList.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlCodeList.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlCompound.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlCompound_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlCompound_2.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlCompound_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlString.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlString_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlTail.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_PlVar.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_ToString.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_Unify.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_Unify_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm__ctor_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm__ctor_2.htm" />
+    <Content Include="Generated\html\N_SbsSW_SwiPlCs.htm" />
+    <Content Include="Generated\html\N_SbsSW_SwiPlCs_Callback.htm" />
+    <Content Include="Generated\html\N_SbsSW_SwiPlCs_Exceptions.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_Exceptions_PlException__ctor.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_Exceptions_PlLibException__ctor.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlEngine_RegisterForeign.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlQuery_Dispose.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlQuery_PlCall.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlQuery_PlCallQuery.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlQuery__ctor.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTermV__ctor.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTerm_Equality.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTerm_Explicit.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTerm_Inequality.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTerm_PlCompound.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTerm_PlString.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTerm_Unify.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTerm__ctor.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_Exceptions_PlException_Message.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_Exceptions_PlException_Term.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlEngine_IsInitialized.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQuery_Args.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQuery_Solutions.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTermV_Item.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTermV_Size.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_Arity.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsAtom.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsAtomic.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsCompound.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsFloat.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsGround.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsInitialized.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsInteger.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsList.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsNumber.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsString.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_IsVar.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_Item.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_Name.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_PlType.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameter0.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameter1.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameter2.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameter3.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameterBacktrack.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameterVarArgs.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_PlForeignSwitches.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Exceptions_PlException.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Exceptions_PlLibException.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Exceptions_PlTypeException.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlEngine.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlFrame.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlQuery.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlTerm.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlTermV.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlType.htm" />
+    <Content Include="Generated\icons\alert_caution.gif" />
+    <Content Include="Generated\icons\alert_note.gif" />
+    <Content Include="Generated\icons\alert_security.gif" />
+    <Content Include="Generated\icons\Caution.gif" />
+    <Content Include="Generated\icons\CFW.gif" />
+    <Content Include="Generated\icons\collapse_all.gif" />
+    <Content Include="Generated\icons\copycode.gif" />
+    <Content Include="Generated\icons\CopyCode_h.gif" />
+    <Content Include="Generated\icons\expand_all.gif" />
+    <Content Include="Generated\icons\LastChild.gif" />
+    <Content Include="Generated\icons\NotLastChild.gif" />
+    <Content Include="Generated\icons\privclass.gif" />
+    <Content Include="Generated\icons\privdelegate.gif" />
+    <Content Include="Generated\icons\privenum.gif" />
+    <Content Include="Generated\icons\privevent.gif" />
+    <Content Include="Generated\icons\privfield.gif" />
+    <Content Include="Generated\icons\privinterface.gif" />
+    <Content Include="Generated\icons\privmethod.gif" />
+    <Content Include="Generated\icons\privproperty.gif" />
+    <Content Include="Generated\icons\privstructure.gif" />
+    <Content Include="Generated\icons\protclass.gif" />
+    <Content Include="Generated\icons\protdelegate.gif" />
+    <Content Include="Generated\icons\protenum.gif" />
+    <Content Include="Generated\icons\protevent.gif" />
+    <Content Include="Generated\icons\protfield.gif" />
+    <Content Include="Generated\icons\protfield.png" />
+    <Content Include="Generated\icons\protinterface.gif" />
+    <Content Include="Generated\icons\protmethod.gif" />
+    <Content Include="Generated\icons\protoperator.gif" />
+    <Content Include="Generated\icons\protproperty.gif" />
+    <Content Include="Generated\icons\protstructure.gif" />
+    <Content Include="Generated\icons\pubclass.gif" />
+    <Content Include="Generated\icons\pubdelegate.gif" />
+    <Content Include="Generated\icons\pubenum.gif" />
+    <Content Include="Generated\icons\pubevent.gif" />
+    <Content Include="Generated\icons\pubfield.gif" />
+    <Content Include="Generated\icons\pubinterface.gif" />
+    <Content Include="Generated\icons\pubmethod.gif" />
+    <Content Include="Generated\icons\puboperator.gif" />
+    <Content Include="Generated\icons\pubproperty.gif" />
+    <Content Include="Generated\icons\pubstructure.gif" />
+    <Content Include="Generated\icons\security.gif" />
+    <Content Include="Generated\icons\static.gif" />
+    <Content Include="Generated\Index.aspx" />
+    <Content Include="Generated\Index.gif" />
+    <Content Include="Generated\Index.html" />
+    <Content Include="Generated\introduction.htm" />
+    <Content Include="Generated\Item.gif" />
+    <Content Include="Generated\LoadIndexKeywords.aspx" />
+    <Content Include="Generated\scripts\CollapsibleSection.js" />
+    <Content Include="Generated\scripts\CookieDataStore.js" />
+    <Content Include="Generated\scripts\ElementCollection.js" />
+    <Content Include="Generated\scripts\EventUtilities.js" />
+    <Content Include="Generated\scripts\highlight.js" />
+    <Content Include="Generated\scripts\LanguageFilter.js" />
+    <Content Include="Generated\scripts\MemberFilter.js" />
+    <Content Include="Generated\scripts\script_prototype.js" />
+    <Content Include="Generated\scripts\SplitScreen.js" />
+    <Content Include="Generated\scripts\StyleUtilities.js" />
+    <Content Include="Generated\Search.gif" />
+    <Content Include="Generated\SearchHelp.aspx" />
+    <Content Include="Generated\Splitter.gif" />
+    <Content Include="Generated\styles\highlight.css" />
+    <Content Include="Generated\styles\presentation.css" />
+    <Content Include="Generated\SyncTOC.gif" />
+    <Content Include="Generated\TOC.css" />
+    <Content Include="Generated\TOC.js" />
+    <Content Include="Generated\WebKI.xml" />
+    <Content Include="Generated\WebTOC.xml" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Download\ChangeLog.txt" />
+    <Content Include="Download\index.htm" />
+    <None Include="build_bin_package.bat" />
+    <Content Include="Generated\Help\sitemap.sitemap" />
+    <Content Include="Download\SwiPlCs_1.1.578.0.zip" />
+    <Content Include="Download\SwiPlCs_1.1.578.1.zip" />
+    <Content Include="Download\SwiPlCs_1.1.5711.0.zip" />
+    <Content Include="Download\SwiPlCs_1.1.5714.0.zip" />
+    <Content Include="Download\SwiPlCs_1.1.5800.0.zip" />
+    <Content Include="Download\SwiPlCs_1.1.5990.0.zip" />
+    <Content Include="Download\SwiPlCs_1.1.60301.0.zip" />
+    <Content Include="Download\SwiPlCs_1.1.60601.0.zip" />
+    <None Include="Generated\Help\SwiCsPl.shfb" />
+    <None Include="Generated\SwiCsPlDocumentation.chm" />
+    <Content Include="Generated\Help\Intelligence.png" />
+    <Content Include="Generated\Help\introduction.htm" />
+    <Content Include="Generated\Help\Tooltip.png" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_SetStreamFunctionRead.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_SetStreamFunctionWrite.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQueryVariables__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_Query.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery_ToList.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQuery__ctor_3.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV_Equals.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV_Equals_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV_GetHashCode.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV_op_Equality.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTermV_op_Inequality.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_ToList.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_ToListString.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlTerm_ToStringCanonical.htm" />
+    <Content Include="Generated\html\N_SbsSW_SwiPlCs_Streams.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_PlTermV_Equals.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_Exceptions_PlException_MessagePl.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQueryVariables_Count.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQueryVariables_Item.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQueryVar_Name.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQueryVar_Value.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQuery_SolutionVariables.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQuery_VariableNames.htm" />
+    <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlQuery_Variables.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlQuerySwitch.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlQueryVar.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_PlQueryVariables.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Streams_DelegateStreamReadFunction.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Streams_DelegateStreamWriteFunction.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Streams_PlStreamType.htm" />
+    <Content Include="Main.Master" />
+    <Content Include="Generated\Web.Config" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Generated\fti\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug64|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51062</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
