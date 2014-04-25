@@ -41,6 +41,8 @@ Add the following lines to .git\info\exlude if you like to commit something
 
 SWI_HOME_DIR has to be set as an environment variable to the SWI-Prolog installation Path.
 
+PATH the bin directory of SWI-Prolog has to be added to the PATH environment variable.
+
 64-Bit
 ------
 To run the test on a 64-Bit environment got to the Test menu 

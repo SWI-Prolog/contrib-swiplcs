@@ -1,4 +1,4 @@
-﻿- CHANGE to SWI-Prolog version 6.6.2
+﻿- CHANGE to SWI-Prolog version 6.6.4
 
 1.1.60601.0 pre release -> 60602.0
 	- Change  public PlQuery(string module, string goal)

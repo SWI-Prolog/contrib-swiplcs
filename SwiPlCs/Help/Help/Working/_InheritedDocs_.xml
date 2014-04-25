@@ -1,0 +1,65 @@
+<doc>
+  <assembly>
+    <name>_InheritedDocs_</name>
+  </assembly>
+  <members>
+  <member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor">
+  
+<summary>Initializes a new instance of the <see cref="T:System.Exception" /> class.</summary></member><member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.String)">
+  
+<summary>Initializes a new instance of the <see cref="T:System.Exception" /> class with a specified error message.</summary><param name="message">The message that describes the error. </param></member><member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.String,System.Exception)">
+  
+<summary>Initializes a new instance of the <see cref="T:System.Exception" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.</summary><param name="message">The error message that explains the reason for the exception. </param><param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified. </param></member><member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+  
+<summary>Initializes a new instance of the <see cref="T:System.Exception" /> class with serialized data.</summary><param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param><param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param><exception cref="T:System.ArgumentNullException">The <paramref name="info" /> parameter is null. </exception><exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult" /> is zero (0). </exception></member><member name="M:IKernDll_PtwAgsCLR.SBSException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+  
+<summary>When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.</summary><param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param><param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param><exception cref="T:System.ArgumentNullException">The <paramref name="info" /> parameter is a null reference (Nothing in Visual Basic). </exception><filterpriority>2</filterpriority><PermissionSet>
+        <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*" />
+        <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter" />
+      </PermissionSet><exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception></member><member name="M:IKernDll_PtwAgsCLR.SBSInterfaceException.#ctor(System.String)">
+  
+<summary>Initializes a new instance of the <see cref="T:System.Exception" /> class with a specified error message.</summary><param name="message">The message that describes the error. </param></member><member name="T:IKernDll_PtwAgsCLR.IFrageText">
+  
+<summary>
+            Interface IFrage
+            </summary></member><member name="T:IKernDll_PtwAgsCLR.IFrageChoice">
+  <summary>
+            Interface zu den Fragen vom <see cref="T:IKernDll_PtwAgsCLR.FrageTyp" /> combo. 
+            Diese Fragen sind analog zu Comboboxen bei denen eine <see cref="T:IKernDll_PtwAgsCLR.IAntwort" /> aus einer 
+            liste möglicher Antworten (see <see cref="P:IKernDll_PtwAgsCLR.IFrage.AnswerPossibilities" />) Augewählt werden kann oder 
+            eine freitext eingabe erfolgen kann oder ist.
+            </summary>
+  
+</member><member name="T:IKernDll_PtwAgsCLR.IFrageCombo">
+  <summary>
+            Interface zu den Fragen vom <see cref="T:IKernDll_PtwAgsCLR.FrageTyp" /><c>choice</c>. 
+            Diese Fragen sind analog zu listboxen bei denen eine <see cref="T:IKernDll_PtwAgsCLR.IAntwort" /> aus einer 
+            liste möglicher Antworten (see <see cref="P:IKernDll_PtwAgsCLR.IFrage.AnswerPossibilities" />) Ausgewählt werden kann oder ist.
+            </summary>
+  
+</member><member name="T:IKernDll_PtwAgsCLR.IFrageVorbelegung">
+  <summary>
+            Interface zu den Fragen vom <see cref="T:IKernDll_PtwAgsCLR.FrageTyp" /><c>vorbelegung</c>. 
+            Diese Frage entspricht der vorbelegungsmaske des Prüm kalkulationsprogramms und enthält im grunde mehrere sub Fragen hier Properties (Eigenschaften) genannt.
+            Die verschiedenen Eigenschaften mit iohren möglichen belegungen werden durch die Klasse <see cref="T:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection" /> abgebildet.
+            </summary>
+  <example>
+    <para>Die folgenden Beispiele zeigen möglichkeiten diese eigenschaften und ihre Werte abzufragen:</para>
+    <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageVorbelegung.cs" region="Sample_usage_Vorbelegung_PropertyValues" />
+    <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageVorbelegung.cs" region="Sample_usage_Vorbelegung_PropertyValues_output" />
+    <para>In diesem Beispiel werden Eigenschaftswerte gesetzt:</para>
+    <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI.cs" region="Sample_usage_Vorbelegung_SetPropertyValue" />
+  </example>
+  <remarks>
+    <para>Interne Anmerkung:</para>
+    <para>
+            Im Tableconstraint existiert der wert 'LEER' welcher angibt das diese Spalte für die betreffende Zeile keine bedeutung hat.
+            Dieser Wert 'LEER' wird im Interface entfernt da ein setzten des wertes 'LEER' keinen sinn macht.
+            Weiterhin wird der Text 'nicht festgelegt' als erster wert in die <c>StringCollection</c> der Werte eingefügt.
+            Wenn 'nicht festgelegt' ausgewählt ist wird dieser Wert bei <see cref="M:IKernDll_PtwAgsCLR.IFrageVorbelegung.SetPropertyValue(System.String,System.String)" />
+            nicht berücksichtigt.
+            </para>
+  </remarks>
+  
+</member></members>
+</doc>

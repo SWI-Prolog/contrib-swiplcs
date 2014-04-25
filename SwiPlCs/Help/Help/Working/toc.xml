@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topics>
+  <topic id="N:IKernDll_PtwAgsCLR" project="_Namespaces" file="a5a527c8-4c92-3493-15d9-8d025982ce1f">
+    <topic id="T:IKernDll_PtwAgsCLR.AntwortListe" project="IKernDll_PtwAgsCLR" file="dc61adf7-64a8-fdb0-a22c-4181ef3b0907">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.AntwortListe" project="IKernDll_PtwAgsCLR" file="dafaaf8c-cea7-3250-f4d5-ff291edd5eef" />
+      <topic id="M:IKernDll_PtwAgsCLR.AntwortListe.#ctor" project="IKernDll_PtwAgsCLR" file="6bc2b87d-d649-7f26-f371-3b5231416a94" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.AntwortListe" project="IKernDll_PtwAgsCLR" file="e34a398f-a3af-ccd7-021f-0fda751e584e">
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.BinarySearch" project="IKernDll_PtwAgsCLR" file="3c69f4db-17b0-73a0-10e0-85353d3b52b4" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.CopyTo" project="IKernDll_PtwAgsCLR" file="3c6896fe-349e-ade0-5c05-10e53ea6d30e" />
+        <topic id="M:IKernDll_PtwAgsCLR.AntwortListe.FindById(System.String)" project="IKernDll_PtwAgsCLR" file="2e3ae762-cbb8-8e88-9a4b-d69dd956fa6e" />
+        <topic id="M:IKernDll_PtwAgsCLR.AntwortListe.FindByNumber(System.String)" project="IKernDll_PtwAgsCLR" file="56e697d3-de3b-19a2-7ab8-4c9113819ea5" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.FindIndex" project="IKernDll_PtwAgsCLR" file="4ce96a18-2a08-3889-662f-fc14609ad734" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.FindLastIndex" project="IKernDll_PtwAgsCLR" file="f6610645-e0b6-9536-d7dd-f1cd883b6b3d" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.IndexOf" project="IKernDll_PtwAgsCLR" file="910d0ada-9615-5ee9-b76f-9bab99ba4690" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.LastIndexOf" project="IKernDll_PtwAgsCLR" file="460454d3-f229-5efc-0041-c356582c86a6" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.Reverse" project="IKernDll_PtwAgsCLR" file="e4680c50-9345-f6e2-9eff-02e4b9f9362d" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.Sort" project="IKernDll_PtwAgsCLR" file="067c05fc-d3e9-4e3f-9406-96050f9deb92" />
+      </topic>
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.AntwortListe" project="IKernDll_PtwAgsCLR" file="ed9484de-c6ba-23ff-579d-e0c2646a69e0">
+        <topic id="Overload:IKernDll_PtwAgsCLR.AntwortListe.Item" project="IKernDll_PtwAgsCLR" file="7fb3dda8-3862-6bb4-1c59-a35e93173333">
+          <topic id="P:IKernDll_PtwAgsCLR.AntwortListe.Item(System.String)" project="IKernDll_PtwAgsCLR" file="8e078b27-14a4-1428-705e-dbf98780fdfe" />
+        </topic>
+      </topic>
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.FrageList" project="IKernDll_PtwAgsCLR" file="8140c38b-79ec-a47d-2888-4a4bdcb4e48e">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.FrageList" project="IKernDll_PtwAgsCLR" file="b1e840dd-05a6-8672-deb6-113912a5f7a5" />
+      <topic id="M:IKernDll_PtwAgsCLR.FrageList.#ctor" project="IKernDll_PtwAgsCLR" file="53163ca8-72f2-5e20-81b7-58a321532403" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.FrageList" project="IKernDll_PtwAgsCLR" file="7c639a2c-7fc8-c39f-44f5-abea3951c3af">
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.BinarySearch" project="IKernDll_PtwAgsCLR" file="c41ba789-70fc-8a4f-71fd-6c9bcd253e88" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.CopyTo" project="IKernDll_PtwAgsCLR" file="1b0efe9a-33f3-da06-763c-a2ebeb8cb509" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.FindIndex" project="IKernDll_PtwAgsCLR" file="65ac28c1-dce5-5c6b-e24e-333c13f09731" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.FindLastIndex" project="IKernDll_PtwAgsCLR" file="f890678e-7230-0f95-95df-c63161e8d6dc" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.IndexOf" project="IKernDll_PtwAgsCLR" file="68ae5d37-3b14-f746-8766-fba655713249" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.LastIndexOf" project="IKernDll_PtwAgsCLR" file="d876b9fd-313b-a42b-2505-9dc52a4edb6f" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.Reverse" project="IKernDll_PtwAgsCLR" file="74710b81-be77-6d1b-8c49-2be406d0520f" />
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.Sort" project="IKernDll_PtwAgsCLR" file="48465adb-3c01-6941-a250-3781b2246ee1" />
+      </topic>
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.FrageList" project="IKernDll_PtwAgsCLR" file="1f59b794-2aa0-43ba-4b85-266f0b23aeba">
+        <topic id="Overload:IKernDll_PtwAgsCLR.FrageList.Item" project="IKernDll_PtwAgsCLR" file="83f2c6b9-b774-c874-aa6b-8d3606022c6a">
+          <topic id="P:IKernDll_PtwAgsCLR.FrageList.Item(System.String)" project="IKernDll_PtwAgsCLR" file="f78fcad4-c89c-2216-78f5-69b0dd2f7d74" />
+        </topic>
+        <topic id="P:IKernDll_PtwAgsCLR.FrageList.LetzteFrage" project="IKernDll_PtwAgsCLR" file="f4efb9a4-19bc-d49d-6d2f-a37d3f177073" />
+      </topic>
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.FrageTyp" project="IKernDll_PtwAgsCLR" file="63881a0d-7f89-5706-43aa-76c352bcfd0e" />
+    <topic id="T:IKernDll_PtwAgsCLR.IAntwort" project="IKernDll_PtwAgsCLR" file="274954f0-546a-e7d7-d0d0-c0bd1311cbdc">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IAntwort" project="IKernDll_PtwAgsCLR" file="5e3e6be8-596a-f4b5-0fb6-142dcac11621" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IAntwort" project="IKernDll_PtwAgsCLR" file="1684b30a-72d4-4d86-0587-b0bd8fa322d4">
+        <topic id="P:IKernDll_PtwAgsCLR.IAntwort.Id" project="IKernDll_PtwAgsCLR" file="e74e706f-a013-43e0-97c6-87bdfde042dc" />
+        <topic id="P:IKernDll_PtwAgsCLR.IAntwort.IsValidAnswer" project="IKernDll_PtwAgsCLR" file="5ce147e0-ea58-375a-41ce-c4ffe451d10c" />
+        <topic id="P:IKernDll_PtwAgsCLR.IAntwort.Text" project="IKernDll_PtwAgsCLR" file="9f2970bd-0403-d7e8-cd7a-0a9276fc31f0" />
+      </topic>
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IFrage" project="IKernDll_PtwAgsCLR" file="4875520c-e0a6-372c-3d38-1b01d0728d2b">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IFrage" project="IKernDll_PtwAgsCLR" file="ab102bb0-fc9f-ff52-006d-f1c7b5fd9808" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IFrage" project="IKernDll_PtwAgsCLR" file="83235a6b-2345-11f3-2f63-179df1d8430e">
+        <topic id="M:IKernDll_PtwAgsCLR.IFrage.PutAntwort(System.String)" project="IKernDll_PtwAgsCLR" file="7cf5d4a3-cb4e-68fd-1590-1745cadd3746" />
+      </topic>
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IFrage" project="IKernDll_PtwAgsCLR" file="3f8afebb-9c60-d148-5b94-7a4abb3e3057">
+        <topic id="P:IKernDll_PtwAgsCLR.IFrage.Answer" project="IKernDll_PtwAgsCLR" file="d08883a7-1128-0cc0-5eac-02d9812c36a2" />
+        <topic id="P:IKernDll_PtwAgsCLR.IFrage.AnswerPossibilities" project="IKernDll_PtwAgsCLR" file="c703914d-bcb2-ff81-fec9-4a20a3ab33f8" />
+        <topic id="P:IKernDll_PtwAgsCLR.IFrage.Id" project="IKernDll_PtwAgsCLR" file="490b701a-2ae0-c89c-b8af-873358249b21" />
+        <topic id="P:IKernDll_PtwAgsCLR.IFrage.IsNormal" project="IKernDll_PtwAgsCLR" file="c25b2127-1955-a3ce-035d-a71f9089eab9" />
+        <topic id="P:IKernDll_PtwAgsCLR.IFrage.Proposal" project="IKernDll_PtwAgsCLR" file="d1fda875-07ed-5e50-632a-b69df4ffb0d2" />
+        <topic id="P:IKernDll_PtwAgsCLR.IFrage.Text" project="IKernDll_PtwAgsCLR" file="f7d8662c-8557-fdf7-6aa7-5335adc8b6d1" />
+        <topic id="P:IKernDll_PtwAgsCLR.IFrage.Typ" project="IKernDll_PtwAgsCLR" file="deeb437f-2549-49e2-1454-f939872c7b30" />
+      </topic>
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IFrageChoice" project="IKernDll_PtwAgsCLR" file="25bc463e-cc4e-ca5f-997c-28393e872916">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IFrageChoice" project="IKernDll_PtwAgsCLR" file="0af1717d-c7dd-8e11-d430-f8c306b40926" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IFrageChoice" project="IKernDll_PtwAgsCLR" file="5b31a321-a86c-9c91-4ba7-c69f8b76ccf2" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IFrageChoice" project="IKernDll_PtwAgsCLR" file="282b04eb-7491-d41c-0fae-9801f7de6b67" />
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IFrageCombo" project="IKernDll_PtwAgsCLR" file="fac17e62-bb81-1823-0d5f-78c4e3a7806b">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IFrageCombo" project="IKernDll_PtwAgsCLR" file="9baaf25a-e22e-0dca-255a-3989eb1459d5" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IFrageCombo" project="IKernDll_PtwAgsCLR" file="6d8a0074-74c3-577c-59b8-6cbde8245757" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IFrageCombo" project="IKernDll_PtwAgsCLR" file="58f41ebb-bb6e-9a92-c5de-723debdeae07" />
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IFrageText" project="IKernDll_PtwAgsCLR" file="ade7d125-167e-ba81-c18f-9205c5fc172e">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IFrageText" project="IKernDll_PtwAgsCLR" file="fb1a4654-eec5-36d8-f66b-bccc581f245d" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IFrageText" project="IKernDll_PtwAgsCLR" file="a9622bb4-10f0-9e38-2740-e77fd466b669" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IFrageText" project="IKernDll_PtwAgsCLR" file="d5af2513-a6ff-3aa8-554d-d1bf471caff1" />
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IFrageVorbelegung" project="IKernDll_PtwAgsCLR" file="29af73c8-0418-77d1-9907-e884be028e41">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IFrageVorbelegung" project="IKernDll_PtwAgsCLR" file="7466e0de-ef10-dde5-e8a8-4de93f81e944" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IFrageVorbelegung" project="IKernDll_PtwAgsCLR" file="965e5718-e590-a529-f94d-2cb2c5a57f9c">
+        <topic id="M:IKernDll_PtwAgsCLR.IFrageVorbelegung.SetPropertyValue(System.String,System.String)" project="IKernDll_PtwAgsCLR" file="8f09e80b-831d-059d-0868-68de499819af" />
+      </topic>
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IFrageVorbelegung" project="IKernDll_PtwAgsCLR" file="ed1130ee-ab21-53b9-5776-afbf17712809">
+        <topic id="P:IKernDll_PtwAgsCLR.IFrageVorbelegung.PropertyValues" project="IKernDll_PtwAgsCLR" file="2a8fa8f3-2af8-9577-cbd3-327b842b71ef" />
+      </topic>
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IFrageZusatzleistung" project="IKernDll_PtwAgsCLR" file="c1fd386d-a63b-efa8-908b-c5c6a862da98">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IFrageZusatzleistung" project="IKernDll_PtwAgsCLR" file="d8618864-1b7e-9c78-3777-4775d16b2b14" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IFrageZusatzleistung" project="IKernDll_PtwAgsCLR" file="0ae97e2e-a3f9-de5f-579f-22d6f894b77a" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IFrageZusatzleistung" project="IKernDll_PtwAgsCLR" file="559f021b-f334-3bbd-1e79-df647c263b63" />
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IFrageZusatzleistungsGruppe" project="IKernDll_PtwAgsCLR" file="8ab02274-f6a8-8cc6-541c-11e9e8227446">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IFrageZusatzleistungsGruppe" project="IKernDll_PtwAgsCLR" file="3df0f358-b77a-133b-d5d3-30d92c26c78e" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IFrageZusatzleistungsGruppe" project="IKernDll_PtwAgsCLR" file="d6a39b2b-1880-5a94-eb89-a77b961d00a7" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IFrageZusatzleistungsGruppe" project="IKernDll_PtwAgsCLR" file="10bea1ae-3588-388c-6454-1ed257593a53" />
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.IKernDll" project="IKernDll_PtwAgsCLR" file="21e8a32c-4690-43aa-41d9-548244d0300a">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.IKernDll" project="IKernDll_PtwAgsCLR" file="e4fdf1db-071c-172f-5a10-8e45f312dd00" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.IKernDll" project="IKernDll_PtwAgsCLR" file="7f5ab086-e6d2-dfc8-a965-16f83aff0721">
+        <topic id="M:IKernDll_PtwAgsCLR.IKernDll.ClearMessages" project="IKernDll_PtwAgsCLR" file="71011b27-c250-0f64-a032-2fad4bd9b93f" />
+      </topic>
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.IKernDll" project="IKernDll_PtwAgsCLR" file="0702b530-510b-f334-df86-30170f535b18">
+        <topic id="P:IKernDll_PtwAgsCLR.IKernDll.Fragen" project="IKernDll_PtwAgsCLR" file="5e3b48ef-11fb-cad1-9cad-d851725a6f69" />
+        <topic id="P:IKernDll_PtwAgsCLR.IKernDll.HasMessage" project="IKernDll_PtwAgsCLR" file="6a9410b9-4cac-2d7f-6575-42a09816d1ff" />
+        <topic id="P:IKernDll_PtwAgsCLR.IKernDll.Messages" project="IKernDll_PtwAgsCLR" file="53cb36bf-129b-d83c-2af5-77a80bb2b980" />
+        <topic id="P:IKernDll_PtwAgsCLR.IKernDll.SystemName" project="IKernDll_PtwAgsCLR" file="7c691e85-df65-a0e5-fc65-4fbabe84031d" />
+      </topic>
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.SBSException" project="IKernDll_PtwAgsCLR" file="a20e3e59-bb03-fb32-8a94-bbd9a2fef104">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.SBSException" project="IKernDll_PtwAgsCLR" file="0b835f36-ff6d-a631-3c18-d300360877e5" />
+      <topic id="Overload:IKernDll_PtwAgsCLR.SBSException.#ctor" project="IKernDll_PtwAgsCLR" file="7d9e2554-19c5-b9e9-a09b-ebe0a98b7f86">
+        <topic id="M:IKernDll_PtwAgsCLR.SBSException.#ctor" project="IKernDll_PtwAgsCLR" file="7dcf6672-5c9f-359a-6681-5360ee64c715" />
+        <topic id="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.String)" project="IKernDll_PtwAgsCLR" file="a4b112cc-fe4f-38ef-dc27-6c355d3841a0" />
+        <topic id="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" project="IKernDll_PtwAgsCLR" file="9602e9ce-7d90-2e9d-67ca-b73b95611be6" />
+        <topic id="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.String,System.Exception)" project="IKernDll_PtwAgsCLR" file="fb0c6493-effd-38ed-0537-2f75cc8b6776" />
+      </topic>
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.SBSException" project="IKernDll_PtwAgsCLR" file="cf49669e-f795-5b1f-3ba0-e0c4ff31d6b3">
+        <topic id="M:IKernDll_PtwAgsCLR.SBSException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)" project="IKernDll_PtwAgsCLR" file="0c617767-1f73-a5c6-302c-4dfa5448b8da" />
+      </topic>
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.SBSException" project="IKernDll_PtwAgsCLR" file="e2e80a7e-3fa3-d9ff-12ec-a0c03de101de" />
+      <topic id="Events.T:IKernDll_PtwAgsCLR.SBSException" project="IKernDll_PtwAgsCLR" file="5cecfbfe-9892-dd8a-8081-270759a24526" />
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.SBSInterfaceException" project="IKernDll_PtwAgsCLR" file="f69a1f67-4053-7ec0-aac3-d8a00d4d754f">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.SBSInterfaceException" project="IKernDll_PtwAgsCLR" file="71687110-8a0b-5148-9c7d-7661a5258186" />
+      <topic id="M:IKernDll_PtwAgsCLR.SBSInterfaceException.#ctor(System.String)" project="IKernDll_PtwAgsCLR" file="4a502358-efb5-9591-f6fd-9ec7c33f1d97" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.SBSInterfaceException" project="IKernDll_PtwAgsCLR" file="81fa286f-eac4-5973-3e55-8ccbfd56055f" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.SBSInterfaceException" project="IKernDll_PtwAgsCLR" file="e49b64ce-e43d-3051-1cb8-81fd211297df" />
+      <topic id="Events.T:IKernDll_PtwAgsCLR.SBSInterfaceException" project="IKernDll_PtwAgsCLR" file="bbfecb56-15cb-752a-6938-b907d0c6003e" />
+    </topic>
+    <topic id="T:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection" project="IKernDll_PtwAgsCLR" file="6ebe4161-53df-91e4-cdd1-cf17b682362e">
+      <topic id="AllMembers.T:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection" project="IKernDll_PtwAgsCLR" file="d46230d8-a632-7aea-5f4a-225f47650307" />
+      <topic id="M:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection.#ctor" project="IKernDll_PtwAgsCLR" file="d539524a-c918-ae65-e208-b0d2e2a5b554" />
+      <topic id="Methods.T:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection" project="IKernDll_PtwAgsCLR" file="7398baea-f90f-d17a-6b4c-2615b420cf86" />
+      <topic id="Properties.T:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection" project="IKernDll_PtwAgsCLR" file="528a3fa3-d45d-d020-fcb1-12bbf7a934f4" />
+    </topic>
+  </topic>
+</topics>

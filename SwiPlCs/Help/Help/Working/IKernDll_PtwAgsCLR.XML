@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>IKernDll_PtwAgsCLR</name>
+  </assembly>
+  <members>
+    <member name="T:IKernDll_PtwAgsCLR.AntwortListe">
+      <summary>
+            Class AntwortListe.
+            </summary>
+      <remarks>
+            Ein Objekt dieser Klasse wird von <see cref="P:IKernDll_PtwAgsCLR.IFrage.AnswerPossibilities" /> erzeugt.
+            Die <c>AntwortListe</c> enthält ein oder mehrere <see cref="T:IKernDll_PtwAgsCLR.IAntwort" /> Objekte.
+            </remarks>
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.AntwortListe.FindById(System.String)">
+      <summary>
+            Findet die Antwort für einen gegeben identifier.
+            </summary>
+      <param name="antId">Die AntwortId.</param>
+      <returns>IAntwort oder <c>null</c> wenn die <c>antId</c> nicht in der AntwortListe ist.</returns>
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.AntwortListe.FindByNumber(System.String)">
+      <summary>
+            Findet die Antwort für eine gegebene Zahl.
+            </summary>
+      <param name="wert">der als Zahl zu suchende wert.</param>
+      <returns>IAntwort oder <c>null</c> wenn der <c>wert</c> nicht in der AntwortListe ist.</returns>
+      <exception cref="T:IKernDll_PtwAgsCLR.SBSInterfaceException">Wirft eine Exception wenn die listen werte <b>nicht</b> mit double.Parse(item.Text) konvertiert werden können.</exception>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.AntwortListe.Item(System.String)">
+      <summary>
+            Holt die <see cref="T:IKernDll_PtwAgsCLR.IAntwort" /> mit dem angegebenen Antworttext.
+            </summary>
+      <param name="antwortText">Der Antworttext.</param>
+      <returns>IAntwort oder <c>null</c> wenn der Text nicht in der AntwortListe ist.</returns>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IAntwort">
+      <summary>
+            Eine Antwort ist entweder beantwortet oder nicht <see cref="P:IKernDll_PtwAgsCLR.IAntwort.IsValidAnswer" />.
+            Eine Antwort kann also eine konkrete Antwort einer Frage sein bzw. das Template zur beantwortung einer Frage.
+            Letzteres trifft auf alle Fragen zu mit ausnahme von <see cref="T:IKernDll_PtwAgsCLR.IFrageChoice" /></summary>
+      <seealso cref="P:IKernDll_PtwAgsCLR.IFrage.Answer" />
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IAntwort.Text">
+      <summary>
+            Getter für den text der Antwort.
+            </summary>
+      <value>Der Antworttext.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IAntwort.Id">
+      <summary>
+            getter für den identifier der Antwort.
+            </summary>
+      <value>Der identifier.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IAntwort.IsValidAnswer">
+      <summary>
+            Gibt <c>true</c> zurück wenn diese Antwort die gültige Antwort einer Frage ist.
+            D.h. die antwort einen AntwortText hat
+            </summary>
+      <value>
+        <c>true</c> wenn die Frage mit dieser Antwort beantwortet ist; anderenfalls, <c>false</c>.</value>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.SBSException">
+      <summary>
+            Class SBSException.
+            <para>
+            Wir empfehlen einen Globalen Exception handler einzubauen um alle Exceptions des Konfigurationskerns abzufangen
+            z.B:
+            </para><code>
+            class Program {
+                static void Main(string[] args) {
+                    AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
+                    throw new Exception("Kaboom");
+                }
+            
+                static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e) {
+                    Console.WriteLine(e.ExceptionObject.ToString());
+                    Console.WriteLine("Press Enter to continue");
+                    Console.ReadLine();
+                    Environment.Exit(1);
+                }
+            }
+            </code></summary>
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor">
+      <inheritdoc />
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.String)">
+      <inheritdoc />
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.String,System.Exception)">
+      <inheritdoc />
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.SBSException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc />
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.SBSException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <inheritdoc />
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.SBSInterfaceException">
+      <summary>
+            Class SBSInterfaceException.
+            <para>
+            Diese Exception wird verwendet wenn Methoden des Interfaces mit falschen oder fehlenden Argumenten aufgerufen werden
+            oder sonstige fehler im interface auftreten die durch eine Fehlerhafte Programmierung des Interfaces auftreten.
+            </para><para>
+            Diese Exception soll geworfen werden wenn pre- oder post conditions (Design by contract) verletzt werden.
+            </para></summary>
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.SBSInterfaceException.#ctor(System.String)">
+      <inheritdoc />
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.FrageList">
+      <summary>
+            Die Klasse FrageList stellt eine Liste der momentan gültigen Fragen bereit.
+            Siehe <see cref="T:IKernDll_PtwAgsCLR.IFrage" /> und 
+             <see cref="P:IKernDll_PtwAgsCLR.IKernDll.Fragen" /></summary>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.FrageList.LetzteFrage">
+      <summary>
+            Getter für die letzte gültige (aktuell zu beantwortende) Frage.
+            </summary>
+      <value>Das Frageobjekt oder <c>null</c>.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.FrageList.Item(System.String)">
+      <summary>
+            indexer für den zugriff auf ein Frageobjet mittels des Fragenamens.
+            </summary>
+      <param name="frageName">
+      </param>
+      <returns>das interface zum Frage objekt</returns>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.FrageTyp">
+      <summary>
+            Enum FrageTyp dient zur Identifikation des Fragetypen
+            <see cref="P:IKernDll_PtwAgsCLR.IFrage.Typ" /></summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.none">
+      <summary>Unbekannter fragetyp</summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.block">
+      <summary>Ein Blockname, keine frage</summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.text">
+      <summary>Fragetyp Text. Eine freie Texteingabe.</summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.vorbelegung">
+      <summary>Fragetyp Text, TableConstraint (Hiword (DIALOGTYP) = 4) z.B. die Frage nach der Vorbelegung</summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.choice">
+      <summary>Fragetyp Choice. Die Auswahl eines Elementes aus einer Antwortliste</summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.combo">
+      <summary>Fragetyp ComboBox. Die Auswahl eines Elementes aus einer Antwortliste oder eine freie Eingabe. z.B. Höhe oder Breite</summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.zusatzleistung">
+      <summary>Fragetyp Text, Zusatzleistung (Hiword (DIALOGTYP) = 8) </summary>
+    </member>
+    <member name="F:IKernDll_PtwAgsCLR.FrageTyp.zusatzleistungsGruppe">
+      <summary>Fragetyp mChoice, zusatzleistungsGruppe (Hiword (DIALOGTYP) = 3). Die Auswahl mehrerer Elemente aus einer Antwortliste</summary>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IFrage">
+      <summary>
+            Interface IFrage
+            </summary>
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.IFrage.PutAntwort(System.String)">
+      <summary>
+            Speichert den übergebenen Antworttext unter berücksichtigung des Regelwerkes des Konfigurationskerns.
+            Dadurch können sich nachfolgende Fragen ändern, neue hinzukommen sowie bereits beantwortete Fragen ungültig werden.
+            <para>
+            Nach dem Aufruf von <c>PutAntwort</c> ist mittels <see cref="P:IKernDll_PtwAgsCLR.IKernDll.HasMessage" /> zu prüfen ob die Eingabe gültig war 
+            und die Meldungen ggf. mittels <see cref="P:IKernDll_PtwAgsCLR.IKernDll.Messages" /> anzuzeigen.
+            </para></summary>
+      <remarks>
+            NOTE: Das aktuelle Frageobjekt wird durch ausführen dieser Methode ungültig!
+            </remarks>
+      <param name="antwortText">Der antwort text.</param>
+      <example>
+        <para>Das folgende Beispiel zeigt die Behandlung und Ausgabe einer Fehlermeldung nachdem versucht wurde in eine ComboBox 
+            ein unzulässiger wert mitttels <c>PutAntwort</c> zu setzen:
+            </para>
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageCombo.cs" region="Sample_usage_PutAntwort_HasMessage" />
+      </example>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrage.Text">
+      <summary>
+            getter holt den Text der Frage.
+            z.B. "Welche Oberfläche?"
+            </summary>
+      <value>Der Fragetext.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrage.Id">
+      <summary>
+            getter für den Identifier (Namen) der Frage.
+            </summary>
+      <value>Der Frage Identifier.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrage.Typ">
+      <summary>
+            Getter für den Typen einer Frage.
+            </summary>
+      <value>Der Fragetyp. <see cref="T:IKernDll_PtwAgsCLR.FrageTyp" /></value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrage.IsNormal">
+      <summary>
+            Zeigt an, ob die Frage Sichtbar und aktivierbar ist (visible and valid / Not gray)
+            </summary>
+      <value>
+        <c>true</c> wenn Fragestatus normal; sonst, <c>false</c>.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrage.Answer">
+      <summary>
+            Holt die Antwort der Frage.
+            Wenn die Frage nicht beantwortet ist wird <c>null</c>zurückgegeben.
+            </summary>
+      <value>Das Interface <see cref="T:IKernDll_PtwAgsCLR.IAntwort" /> des Antwort Objektes.</value>
+      <example>
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageVorbelegung.cs" region="Sample_usage_Answer_is_null" />
+      </example>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrage.AnswerPossibilities">
+      <summary>
+            Gibt eine Liste der möglichen Antworten zurück. (FrageTyp Choice)
+            für eineige FrageTypen enthält die liste nur eine Antwot.
+            </summary>
+      <value>Liste der Antworten</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrage.Proposal">
+      <summary>
+            Getter für einen Antwort vorschlag.
+            </summary>
+      <value>Der Antwoert vorschlag oder <c>null</c> wenn kein vorschlag existiert.</value>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IFrageText">
+      <inheritdoc />
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IFrageChoice">
+      <summary>
+            Interface zu den Fragen vom <see cref="T:IKernDll_PtwAgsCLR.FrageTyp" /> combo. 
+            Diese Fragen sind analog zu Comboboxen bei denen eine <see cref="T:IKernDll_PtwAgsCLR.IAntwort" /> aus einer 
+            liste möglicher Antworten (see <see cref="P:IKernDll_PtwAgsCLR.IFrage.AnswerPossibilities" />) Augewählt werden kann oder 
+            eine freitext eingabe erfolgen kann oder ist.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IFrageCombo">
+      <summary>
+            Interface zu den Fragen vom <see cref="T:IKernDll_PtwAgsCLR.FrageTyp" /><c>choice</c>. 
+            Diese Fragen sind analog zu listboxen bei denen eine <see cref="T:IKernDll_PtwAgsCLR.IAntwort" /> aus einer 
+            liste möglicher Antworten (see <see cref="P:IKernDll_PtwAgsCLR.IFrage.AnswerPossibilities" />) Ausgewählt werden kann oder ist.
+            </summary>
+      <inheritdoc />
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IFrageZusatzleistungsGruppe">
+      <summary>
+            Interface IFrageZusatzleistungsGruppe
+            <para>TODO</para><para>
+            ist noch in bearbeitung
+            </para></summary>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection">
+      <summary>
+            Die Klasse VorbelegungPropertyValueCollection beinhaltet die Daten der Vorbelegungsfrage.
+            <seealso cref="P:IKernDll_PtwAgsCLR.IFrageVorbelegung.PropertyValues" /></summary>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IFrageVorbelegung">
+      <summary>
+            Interface zu den Fragen vom <see cref="T:IKernDll_PtwAgsCLR.FrageTyp" /><c>vorbelegung</c>. 
+            Diese Frage entspricht der vorbelegungsmaske des Prüm kalkulationsprogramms und enthält im grunde mehrere sub Fragen hier Properties (Eigenschaften) genannt.
+            Die verschiedenen Eigenschaften mit iohren möglichen belegungen werden durch die Klasse <see cref="T:IKernDll_PtwAgsCLR.VorbelegungPropertyValueCollection" /> abgebildet.
+            </summary>
+      <example>
+        <para>Die folgenden Beispiele zeigen möglichkeiten diese eigenschaften und ihre Werte abzufragen:</para>
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageVorbelegung.cs" region="Sample_usage_Vorbelegung_PropertyValues" />
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageVorbelegung.cs" region="Sample_usage_Vorbelegung_PropertyValues_output" />
+        <para>In diesem Beispiel werden Eigenschaftswerte gesetzt:</para>
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI.cs" region="Sample_usage_Vorbelegung_SetPropertyValue" />
+      </example>
+      <remarks>
+        <para>Interne Anmerkung:</para>
+        <para>
+            Im Tableconstraint existiert der wert 'LEER' welcher angibt das diese Spalte für die betreffende Zeile keine bedeutung hat.
+            Dieser Wert 'LEER' wird im Interface entfernt da ein setzten des wertes 'LEER' keinen sinn macht.
+            Weiterhin wird der Text 'nicht festgelegt' als erster wert in die <c>StringCollection</c> der Werte eingefügt.
+            Wenn 'nicht festgelegt' ausgewählt ist wird dieser Wert bei <see cref="M:IKernDll_PtwAgsCLR.IFrageVorbelegung.SetPropertyValue(System.String,System.String)" />
+            nicht berücksichtigt.
+            </para>
+      </remarks>
+      <inheritdoc />
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.IFrageVorbelegung.SetPropertyValue(System.String,System.String)">
+      <summary>
+            Setzt einen <c>value</c> fur ein Eigenschaftsfeld <c>propertyName</c> der  VorbelegungsFrage.
+            Anschließend muss PropertyValues erneut abgefragt werden, um die veränderten Werte zu holen.
+            </summary>
+      <param name="propertyName">Name der Vorbelegungseigenschaft.</param>
+      <param name="value">Der Wert der Vorbelegungseigenschaft.</param>
+      <example>
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI.cs" region="Sample_usage_Vorbelegung_SetPropertyValue" />
+      </example>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IFrageVorbelegung.PropertyValues">
+      <summary>
+            Gibt die Daten der Vorbelegungsfrage zurück.
+            Holt alle Eigenschaftsfelder der Vorbelegungsfrage und deren mögliche Antworten 
+            in einer <c>VorbelegungPropertyValueCollection</c></summary>
+      <value>Die Vorbelegungsfragen mit den möglichen Antworten.</value>
+      <example>
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageVorbelegung.cs" region="Sample_usage_Vorbelegung_PropertyValues" />
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\TKI_FrageVorbelegung.cs" region="Sample_usage_Vorbelegung_PropertyValues_output" />
+      </example>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IFrageZusatzleistung">
+      <summary>
+            Interface IFrageZusatzleistung
+            <para>TODO</para><para>
+            ist noch in bearbeitung
+            </para></summary>
+    </member>
+    <member name="T:IKernDll_PtwAgsCLR.IKernDll">
+      <summary>
+            Das Interface IKernDll stellt Eigenschaften für die Fehlerbehandlung <see cref="T:IKernDll_PtwAgsCLR.IKernDll.Messages" /> und 
+            zum ermitteln der aktuellen FrageListe bereit.
+            </summary>
+      <example>
+        <code source="E:\TFS\MFC\Main\PruemMoveIt\KernDll_PtwAgsCLR_TEST\BasicInitialisation.cs" region="Sample_usage_KernDll" />
+      </example>
+    </member>
+    <member name="M:IKernDll_PtwAgsCLR.IKernDll.ClearMessages">
+      <summary>
+            Löscht die Messages des Kerns.
+            </summary>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IKernDll.SystemName">
+      <summary>
+            Getter für den Systemnamen.
+            </summary>
+      <value>The systemname.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IKernDll.HasMessage">
+      <summary>
+        <c>true</c> wenn der Konfigurationskerns eine oder mehrere Nachrichten erzeugt hat.
+            Dies ist potenziell nach jedem Methodenaufruf des Konfigurationskerns möglich.
+            Siehe auch: <see cref="P:IKernDll_PtwAgsCLR.IKernDll.Messages" /></summary>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IKernDll.Messages">
+      <summary>
+            Getter für die Nachrichten des Konfigurationskerns.
+            <para>Ein Code Beispiel für die Typische verwendung ist bei <see cref="M:IKernDll_PtwAgsCLR.IFrage.PutAntwort(System.String)" /> angegeben.</para></summary>
+      <value>The Messages.</value>
+    </member>
+    <member name="P:IKernDll_PtwAgsCLR.IKernDll.Fragen">
+      <summary>
+            Holt die momentan gültigen Fragen.
+            </summary>
+      <value>Eine Liste der Frage Objekte.</value>
+    </member>
+    <member name="N:IKernDll_PtwAgsCLR">
+      <summary />
+    </member>
+  </members>
+</doc>
