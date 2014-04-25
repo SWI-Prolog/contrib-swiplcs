@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+This file was for FxCop
+see ´"How to: Customize the Code Analysis Dictionary"
+from: http://msdn.microsoft.com/en-us/library/bb514188.aspx
+-->
+<Dictionary>
+ <Words>
+  <Unrecognized>
+   <Word>cb</Word>
+  </Unrecognized>
+  <Recognized>
+		<Word>Swi</Word>
+		<Word>Sbs</Word>
+		<Word>SwiPlCs</Word>
+		<Word>Pl</Word>
+		<Word>argc</Word>
+		<Word>argv</Word>
+		<Word>Arity</Word>
+		<Word>functor</Word>
+
+	</Recognized>
+  <Deprecated>
+    <!-- Be sure to pascal-case deprecated terms and preferred alternates     -->
+    <!-- Note that terms consisting of one or two tokens only will be flagged -->    
+    <!-- eg, ComPlus can be checked for but NewComPlus will not be detected   -->    
+    <Term PreferredAlternate="EnterpriseServices">ComPlus</Term> 
+  </Deprecated>
+  <Inappropriate/>
+ </Words>
+ <Acronyms>
+  <CasingExceptions>
+		<Acronym>Swi</Acronym>
+		<Acronym>Pl</Acronym>
+		<Acronym>Cpp</Acronym>
+		<Acronym>Cs</Acronym>
+		<Acronym>Mt</Acronym>
+	</CasingExceptions>
+ </Acronyms>
+</Dictionary>
