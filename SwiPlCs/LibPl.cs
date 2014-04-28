@@ -20,7 +20,7 @@
 *********************************************************/
 
 using System;
-using System.Text;
+using SbsSW.DesignByContract;
 using SbsSW.SwiPlCs.Exceptions;         // in PlHalt
 using System.Runtime.InteropServices;
 
@@ -107,7 +107,7 @@ namespace SbsSW.SwiPlCs
 			}
         }
 
-		public static void UnLoadUnmanagedLibrary()
+		private static void UnLoadUnmanagedLibrary()
 		{
 			if (!_hLibrary.IsClosed)
 			{
@@ -174,25 +174,25 @@ namespace SbsSW.SwiPlCs
 		}
 
 
-		/// <summary>
-		/// Does NOT work correct if engine is_initialised
-		/// int PL_is_initialised(int *argc, char ***argv) 
-        /// PL_is_initialised is the *only* function which may called befor PL_initialise
-		/// </summary>
-		/// <param name="argc"></param>
-		/// <param name="argv"></param>
-		/// <returns></returns>
-		internal static int PL_is_initialised(ref int argc, ref String[] argv)
-		{
-			int iRet = 0;
-			if (IsValid)
-			{
-				iRet = SafeNativeMethods.PL_is_initialised(ref argc, ref argv);
-			}
-			return iRet;
-		}
+        //internal static int PL_is_initialised(ref int argc, ref String[] argv)
+        //{
+        //    int iRet = 0;
+        //    if (IsValid)
+        //    {
+        //        iRet = SafeNativeMethods.PL_is_initialised(ref argc, ref argv);
+        //    }
+        //    return iRet;
+        //}
 
-		internal static int PL_is_initialised(IntPtr argc, IntPtr argv)
+        /// <summary>
+        /// Does NOT work correct if engine is_initialised
+        /// int PL_is_initialised(int *argc, char ***argv) 
+        /// PL_is_initialised is the *only* function which may called befor PL_initialise
+        /// </summary>
+        /// <param name="argc"></param>
+        /// <param name="argv"></param>
+        /// <returns></returns>
+        internal static int PL_is_initialised(IntPtr argc, IntPtr argv)
 		{
 			int iRet = 0;
 			if (IsValid)
@@ -247,16 +247,17 @@ namespace SbsSW.SwiPlCs
 		{ return SafeNativeMethods.PL_destroy_engine(engine); }
 
 
+        internal static uintptr_t PL_new_atom_wchars(string text)
+	    {
+	        int len = text.Length;
+	        return SafeNativeMethods.PL_new_atom_wchars(len, text);
+	    }
 
-		// TODO wchar
-        internal static uintptr_t PL_new_atom(string text)
-		{ return SafeNativeMethods.PL_new_atom(text); }
-
-        // TODO wchar
-        internal static String PL_atom_chars(uintptr_t tAtom)
-		{
+        internal static String PL_atom_wchars(uintptr_t tAtom)
+        {
             // see http://www.mycsharp.de/wbb2/thread.php?threadid=51100
-            return Marshal.PtrToStringAnsi( SafeNativeMethods.PL_atom_chars(tAtom) ); 
+            int dummyLen = 0;
+            return Marshal.PtrToStringUni(SafeNativeMethods.PL_atom_wchars(tAtom, ref dummyLen));
         }
 
 
@@ -267,19 +268,19 @@ namespace SbsSW.SwiPlCs
 
         // see http://gollem.science.uva.nl/SWI-Prolog/Manual/foreigninclude.html#PL_query()
 // ReSharper disable InconsistentNaming
-        public const int PL_QUERY_ARGC = 1;	    /* return main() argc */
-        public const int PL_QUERY_ARGV = 2;	    /* return main() argv */
+        internal const int PL_QUERY_ARGC = 1;	            /* return main() argc */
+        internal const int PL_QUERY_ARGV = 2;	            /* return main() argv */
 					                        /* 3: Obsolete PL_QUERY_SYMBOLFILE */
 					                        /* 4: Obsolete PL_QUERY_ORGSYMBOLFILE*/
-        public const int PL_QUERY_GETC = 5;	            /* Read character from terminal */
-        public const int PL_QUERY_MAX_INTEGER = 6;	    /* largest integer */
-        public const int PL_QUERY_MIN_INTEGER = 7;	    /* smallest integer */
-        public const int PL_QUERY_MAX_TAGGED_INT = 8;	/* largest tagged integer */
-        public const int PL_QUERY_MIN_TAGGED_INT = 9;	/* smallest tagged integer */
-        public const int PL_QUERY_VERSION = 10;	        /* 207006 = 2.7.6 */
-        public const int PL_QUERY_MAX_THREADS = 11;	    /* maximum thread count */
-        public const int PL_QUERY_ENCODING = 12;	    /* I/O encoding */
-        public const int PL_QUERY_USER_CPU = 13;	    /* User CPU in milliseconds */
+        internal const int PL_QUERY_GETC = 5;	            /* Read character from terminal */
+        internal const int PL_QUERY_MAX_INTEGER = 6;	    /* largest integer */
+        internal const int PL_QUERY_MIN_INTEGER = 7;	    /* smallest integer */
+        internal const int PL_QUERY_MAX_TAGGED_INT = 8;	    /* largest tagged integer */
+        internal const int PL_QUERY_MIN_TAGGED_INT = 9;	    /* smallest tagged integer */
+        internal const int PL_QUERY_VERSION = 10;	        /* 207006 = 2.7.6 */
+        internal const int PL_QUERY_MAX_THREADS = 11;	    /* maximum thread count */
+        internal const int PL_QUERY_ENCODING = 12;	        /* I/O encoding */
+        internal const int PL_QUERY_USER_CPU = 13;	        /* User CPU in milliseconds */
 // ReSharper restore InconsistentNaming
 
 
@@ -299,7 +300,7 @@ namespace SbsSW.SwiPlCs
 		}
 
         internal static void PL_rewind_foreign_frame(uintptr_t fid_t)
-		{ SafeNativeMethods.PL_close_foreign_frame(fid_t); }
+		{ SafeNativeMethods.PL_rewind_foreign_frame(fid_t); }
 
         // record 
 
@@ -346,30 +347,12 @@ namespace SbsSW.SwiPlCs
         internal static void PL_put_float(uintptr_t term, double i)
 		{ SafeNativeMethods.PL_put_float(term, i); }
 
-        internal static void PL_put_atom(uintptr_t term, uintptr_t atomHandle)
-		{ SafeNativeMethods.PL_put_atom(term, atomHandle); }
-
-
-        // For a compleete class see GitHub: ohLibSpotify / src / ohLibSpotify / Utf8String.cs at https://github.com/openhome/ohLibSpotify/blob/master/src/ohLibSpotify/Utf8String.cs#L99
-        private static string Utf8ToString(IntPtr aUtf8)
+        internal static int PL_get_wchars(uintptr_t term, out string s, uint flags)
         {
-            if (aUtf8 == IntPtr.Zero)
-                return null;
-            int len = 0;
-            while (Marshal.ReadByte(aUtf8, len) != 0)
-                len++;
-            if (len == 0)
-                return "";
-            var array = new byte[len];
-            Marshal.Copy(aUtf8, array, 0, len);
-            return Encoding.UTF8.GetString(array);
-        }
-        // wchar is working well with the used UTF8 encoding see Utf8ToString
-        internal static int PL_get_chars(uintptr_t term, out string s, uint flags)
-        {
+            var dummyLen = 0;
             var ps = IntPtr.Zero;
-            var iRet =  SafeNativeMethods.PL_get_chars(term, ref ps, flags);
-            s = Utf8ToString(ps);
+            var iRet = SafeNativeMethods.PL_get_wchars(term, ref dummyLen, ref ps, flags);
+            s = Marshal.PtrToStringUni(ps);
             return iRet;
         }
 
@@ -378,9 +361,6 @@ namespace SbsSW.SwiPlCs
 
         internal static int PL_get_float(uintptr_t term, ref double i)
 		{ return SafeNativeMethods.PL_get_float(term, ref i); }
-
-        // internal static int PL_get_atom(uintptr_t term, ref uintptr_t atom_t)
-		// { return SafeNativeMethods.PL_get_atom(term, ref atom_t); }
 
         internal static int PL_term_type(uintptr_t t)
 		{ return SafeNativeMethods.PL_term_type(t); }
@@ -398,11 +378,8 @@ namespace SbsSW.SwiPlCs
         internal static void PL_put_term(uintptr_t t1, uintptr_t t2)
 		{ SafeNativeMethods.PL_put_term(t1, t2); }
 
-        // TODO wchars PL_chars_to_term wieder einbauen um lolevel bereit zu stellen
-		// PlCompound
 	    internal static int PL_wchars_to_term(string chars, uintptr_t term)
 	    {
-	        //var ptr = Utf8String.StringToUtf8(chars).IntPtr;
             return SafeNativeMethods.PL_wchars_to_term(chars, term);
 	    }
 
@@ -411,26 +388,6 @@ namespace SbsSW.SwiPlCs
 
         internal static uintptr_t PL_new_functor(uintptr_t atomA, int a)
 		{ return SafeNativeMethods.PL_new_functor(atomA, a); }
-
-
-        // TODO wchars
-        internal static void PL_put_string_chars(uintptr_t term_t, string chars)
-		{ SafeNativeMethods.PL_put_string_chars(term_t, chars); }
-
-        // TODO wchars
-        internal static void PL_put_string_nchars(uintptr_t term_t, int len, string chars)
-		{ SafeNativeMethods.PL_put_string_nchars(term_t, len, chars); }
-
-        // TODO wchars
-        internal static void PL_put_list_codes(uintptr_t term_t, string chars)
-		{ SafeNativeMethods.PL_put_list_codes(term_t, chars); }
-
-        // TODO wchars
-        internal static void PL_put_list_chars(uintptr_t term_t, string chars)
-		{ SafeNativeMethods.PL_put_list_chars(term_t, chars); }
-
-        internal static void PL_put_list(uintptr_t term_t)
-		{ SafeNativeMethods.PL_put_list(term_t); }
 
 
         // Testing the type of a term
@@ -485,13 +442,24 @@ namespace SbsSW.SwiPlCs
         internal static int PL_unify(uintptr_t t1, uintptr_t t2)
         { return SafeNativeMethods.PL_unify(t1, t2); }
 
-        // TODO wchars
-        internal static int PL_unify_atom_chars(uintptr_t t1, string atom)
-        { return SafeNativeMethods.PL_unify_atom_chars(t1, atom); }
+	    /// <summary>
+	    /// Unify t with a textual representation of the C wide-character array s. 
+	    /// The type argument defines the Prolog representation and is one of PL_ATOM, PL_STRING, PL_CODE_LIST or PL_CHAR_LIST.
+	    /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="type"></param>
+        /// <param name="wchars"></param>
+	    /// <returns></returns>
+        internal static int PL_unify_wchars(uintptr_t t1, PlType type, string wchars)
+        {
+            return PL_unify_wchars(t1, type, wchars.Length, wchars);
+        }
 
-        //internal static int PL_unify_integer(uint t1, Int32 n)
-		//{ return SafeNativeMethods.PL_unify_integer(t1, n); }
-
+        internal static int PL_unify_wchars(uintptr_t t1, PlType type, int len, string wchars)
+        {
+            Check.Require(type == PlType.PlAtom || type == PlType.PlString || type == PlType.PlCharList || type == PlType.PlCodeList);
+            return SafeNativeMethods.PL_unify_wchars(t1, (int)type, len, wchars);
+        }
 
 
 		// Exceptions
@@ -525,25 +493,22 @@ namespace SbsSW.SwiPlCs
         // *	  PROLOG STREAM's		*
         // ******************************
 
-        internal static int Slinesize()
-        { return SafeNativeMethods.SlineSize(); }
+        //internal static int Slinesize()
+        //{ return SafeNativeMethods.SlineSize(); }
 
-        internal static IntPtr S__getiob()
-        { return SafeNativeMethods.S__getiob(); }
+        //internal static IntPtr S__getiob()
+        //{ return SafeNativeMethods.S__getiob(); }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns> a SWI-PROLOG IOSTREAM defined in spl-stream.h</returns>
-        internal static IntPtr Snew()
-        { return SafeNativeMethods.Snew(IntPtr.Zero, 0, IntPtr.Zero); }
+        // <returns> a SWI-PROLOG IOSTREAM defined in spl-stream.h</returns>
+        //internal static IntPtr Snew()
+        //{ return SafeNativeMethods.Snew(IntPtr.Zero, 0, IntPtr.Zero); }
 
 
         // from pl-itf.h
         // PL_EXPORT(int)  	PL_unify_stream(term_t t, IOSTREAM *s);
-        internal static int PL_unify_stream(uintptr_t term_t, IntPtr iostream)
-        { return SafeNativeMethods.PL_unify_stream(term_t, iostream); }
+        //internal static int PL_unify_stream(uintptr_t term_t, IntPtr iostream)
+        //{ return SafeNativeMethods.PL_unify_stream(term_t, iostream); }
 
 
 	} // LibPl

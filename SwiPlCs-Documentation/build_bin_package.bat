@@ -1,3 +1,6 @@
+rem winrar must be installed at c:\programme\winrar\winrar
+rem Sandcastle Help File Builder (shfb) must be installed
+rem 
 rem rar sample at http://daily-it.blogspot.com/2007/11/rar-command-line-with-real-world.html
 
 setlocal 
@@ -6,7 +9,7 @@ setlocal
 	devenv ..\SWIplcs_git.sln /Build Release64 /Project SwiPlCs
 endlocal
 
-set DEST=Download\SwiPlCs_1.1.60604.0.zip
+set DEST=Download\SwiPlCs_1.1.60605.0.zip
 set SOURCEPATH=..\SwiPlCs\bin\Release
 set SOURCEPATH64=..\SwiPlCs\bin\Release64
 

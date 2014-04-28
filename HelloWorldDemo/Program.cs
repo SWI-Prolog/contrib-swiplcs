@@ -39,7 +39,7 @@ namespace HelloWorldDemo
                 PlQuery.PlCall("assert(father(uwe, gloria))");
                 PlQuery.PlCall("assert(father(uwe, melanie))");
                 PlQuery.PlCall("assert(father(uwe, ayala))");
-                using (PlQuery q = new PlQuery("father(P, C), atomic_list_concat([P,' is_father_of ',C], L)"))
+                using (var q = new PlQuery("father(P, C), atomic_list_concat([P,' is_father_of ',C], L)"))
                 {
                     foreach (PlQueryVariables v in q.SolutionVariables)
                         Console.WriteLine(v["L"].ToString());

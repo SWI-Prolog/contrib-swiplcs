@@ -44,7 +44,7 @@
     <PresentationStyle>Prototype</PresentationStyle>
     <NamingMethod>MemberName</NamingMethod>
     <IncludeFavorites>True</IncludeFavorites>
-    <HelpFileVersion>1.1.60604.0</HelpFileVersion>
+    <HelpFileVersion>1.1.60605.0</HelpFileVersion>
     <ComponentConfigurations>
       <ComponentConfig id="Code Block Component" enabled="True">
         <component id="Code Block Component" type="SandcastleBuilder.Components.CodeBlockComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">

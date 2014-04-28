@@ -1,28 +1,15 @@
-﻿- wChars für den rest (atom und string)
+﻿
+- Tests commentieren (GPL 2), resharpen, sotrtieren, aufrüumen
 
 - Code coverage durcharbeiten und tests ergänzen / refactorn 
 
-- Tests commentieren (GPL 2), resharpen, sotrtieren, aufrüumen
-
 - 64-Bit Unit test t_varargs_single zum laufen bringen
 
-- SwiPlCs aufrüumen commentare resharper, code analyse
 
 
-	
 	
 PlConNet:
-	
-	
 
-Pltern(string / plterm.PlCompount
-	einer ist über
-
-Documentation:
-	- erste seite
-	- beispiele für die neue query
-		- try catch
-		
 fern ziel echtes stream marshalling
 
 -----------------------------------------------

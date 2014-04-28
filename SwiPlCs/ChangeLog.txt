@@ -1,4 +1,8 @@
-﻿- CHANGE to SWI-Prolog version 6.6.4
+﻿
+1.1.60605.0 
+
+1.1.60604.0 pre release unicode
+	- PlTerm.PlCompound is Obsolete. Please use new PlTerm(string) instead.
 
 1.1.60601.0 pre release -> 60602.0
 	- Change  public PlQuery(string module, string goal)

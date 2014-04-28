@@ -26,9 +26,6 @@
 using System;
 using System.Runtime.Serialization;	// Exception implementation 
 using System.Security.Permissions;	// SecurityPermissionAttribute for GetObjectData
-using SbsSW.DesignByContract;
-
-
 
 
 namespace SbsSW.SwiPlCs.Exceptions
@@ -182,7 +179,6 @@ namespace SbsSW.SwiPlCs.Exceptions
         /// <see cref="PlException"/>
         public PlException(PlTerm term)
 		{
-            Check.Require(term.TermRefIntern != 0);
             _exTerm = new PlTerm(term.TermRef);  // If this line is deleted -> update comment in PlTern(term_ref)
 		}
 
@@ -209,7 +205,7 @@ namespace SbsSW.SwiPlCs.Exceptions
                 return "A PlException was thrown but it can't formatted because PlEngine is not Initialized.";
 
 			string strRet = "[ERROR: Failed to generate message.  Internal error]\n";
-            using (var fr = new PlFrame())
+            using (new PlFrame())
             {
 
 #if USE_PRINT_MESSAGE
@@ -257,7 +253,7 @@ namespace SbsSW.SwiPlCs.Exceptions
 
 			if (0 != LibPl.PL_get_arg(1, _exTerm.TermRef, a) && 0 != LibPl.PL_get_name_arity(a, ref name, ref arity))
 			{
-				string str = LibPl.PL_atom_chars(name);
+				string str = LibPl.PL_atom_wchars(name);
 
 				if (str == "type_error")
 					throw new PlTypeException(_exTerm);
@@ -346,16 +342,19 @@ namespace SbsSW.SwiPlCs.Exceptions
         /// <inheritdoc cref="T:SbsSW.SwiPlCs.Exceptions.PlException" />
         public PlDomainException()
         { }
-		/*
-		public PlDomainException(string message)
+
+        /// <inheritdoc cref="T:SbsSW.SwiPlCs.Exceptions.PlException" />
+        public PlDomainException(string message)
 			: base(message)
 		{
 		}
-		public PlDomainException(string message, Exception innerException)
+        
+        /// <inheritdoc cref="T:SbsSW.SwiPlCs.Exceptions.PlException" />
+        public PlDomainException(string message, Exception innerException)
 			: base(message, innerException)
 		{
 		}
-         */
+
         /// <inheritdoc cref="PlException" />
         protected PlDomainException(SerializationInfo info, StreamingContext context)
 			: base(info, context)

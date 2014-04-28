@@ -47,16 +47,13 @@ using System.Runtime.ConstrainedExecution;
 namespace SbsSW.SwiPlCs
 {
 
-    // TODO define term_t, atom_t record_t .... and change all si
-    //      
-    // using uintptr_t = System.UInt64;
     [StructLayout(LayoutKind.Explicit)]
     internal struct uintptr_t
     {
         [FieldOffset(0)]
 #if _PL_X64
         private System.UInt64 _uintptr;
-        public uintptr_t(ulong l)
+        internal uintptr_t(ulong l)
         {
             this._uintptr = l;
         }
@@ -65,8 +62,8 @@ namespace SbsSW.SwiPlCs
             return new uintptr_t(term1._uintptr + l);
         }
 #else
-        private System.UInt32 _uintptr;
-        public uintptr_t(uint i)
+        private UInt32 _uintptr;
+        internal uintptr_t(uint i)
         {
             _uintptr = i;
         }
@@ -75,11 +72,6 @@ namespace SbsSW.SwiPlCs
             return new uintptr_t(term1._uintptr + (uint)l);
         }
 #endif
-
-        public uintptr_t(uintptr_t i)
-        {
-            _uintptr = i._uintptr;
-        }
 
         public override int GetHashCode()
         {
@@ -131,23 +123,18 @@ namespace SbsSW.SwiPlCs
         }
 
         //---------------
-        public static implicit operator uintptr_t(int term2)
+        // assignment = operator
+        public static implicit operator uintptr_t(long term2)
         {
             uintptr_t x;
-            x._uintptr = (uint)term2;// TODO ulong
+#if _PL_X64
+            x._uintptr = (ulong)term2;
+#else
+            x._uintptr = (uint)term2;
+#endif
             return x;
         }
 
-        public static implicit operator ulong(uintptr_t term)
-        {
-            return term._uintptr;
-        }
-
-        public static uintptr_t operator -(uintptr_t term1, uint term2)// TODO ulong
-        {
-            return new uintptr_t(term1._uintptr - term2);
-        }
- 
     }
 
 
@@ -232,14 +219,14 @@ namespace SbsSW.SwiPlCs
 #endif
         }
 
-        internal static IntPtr GetProcHandle(SafeLibraryHandle hModule, String procname)
-        {
-#if _LINUX
-            return dlsym(hModule, procname);
-#else
-            return GetProcAddress(hModule, procname);		
-#endif
-        }
+//        internal static IntPtr GetProcHandle(SafeLibraryHandle hModule, String procname)
+//        {
+//#if _LINUX
+//            return dlsym(hModule, procname);
+//#else
+//            return GetProcAddress(hModule, procname);		
+//#endif
+//        }
 
 
         internal static IntPtr GetPoninterOfIoFunctions(SafeLibraryHandle hModule)
@@ -302,9 +289,9 @@ namespace SbsSW.SwiPlCs
         // TODO wchar
         [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
         internal static extern int PL_initialise(int argc, String[] argv);
-		[DllImport(DllFileName)]
 			// PL_EXPORT(int)		PL_is_initialised(int *argc, char ***argv);
-		internal static extern int PL_is_initialised([In, Out] ref int argc, [In, Out] ref String[] argv);
+        //[DllImport(DllFileName)]
+        //internal static extern int PL_is_initialised([In, Out] ref int argc, [In, Out] ref String[] argv);
 		[DllImport(DllFileName)]
 		internal static extern int PL_is_initialised(IntPtr argc, IntPtr argv);
 		[DllImport(DllFileName)]
@@ -337,12 +324,13 @@ namespace SbsSW.SwiPlCs
 		[DllImport(DllFileName)]	// PL_EXPORT(int)		PL_destroy_engine(PL_engine_t engine);
 		internal static extern int PL_destroy_engine(IntPtr engine);
 
-        // TODO wchar
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern uintptr_t PL_new_atom(string text);
-        // TODO wchar
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)] // return const char *
-        internal static extern IntPtr PL_atom_chars(uintptr_t atom);
+        // atom_t PL_new_atom_nchars(size_t len, const char *s)
+        [DllImport(DllFileName, CharSet = CharSet.Unicode, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern uintptr_t PL_new_atom_wchars(Int32 len, string text);
+
+        // pl_wchar_t* PL_atom_wchars(atom_t atom, int *len)
+        [DllImport(DllFileName, CharSet = CharSet.Unicode, BestFitMapping = false, ThrowOnUnmappableChar = true)] // return const char *
+        internal static extern IntPtr PL_atom_wchars(uintptr_t atom, [In, Out] ref int len);
         
         // Pl_Query
         [DllImport(DllFileName)]
@@ -353,7 +341,7 @@ namespace SbsSW.SwiPlCs
         internal static extern uintptr_t PL_open_foreign_frame();
         [DllImport(DllFileName)]
         internal static extern void PL_close_foreign_frame(uintptr_t fid_t);
-		[DllImport(DllFileName)]
+        [DllImport(DllFileName)]
         internal static extern void PL_rewind_foreign_frame(uintptr_t fid_t);
         // record recorded erase
         [DllImport(DllFileName)]
@@ -385,14 +373,11 @@ namespace SbsSW.SwiPlCs
         internal static extern void PL_put_integer(uintptr_t term, int i);
 		[DllImport(DllFileName)]
         internal static extern void PL_put_float(uintptr_t term, double i);
-		// __pl_export void	PL_put_atom(term_t term, atom_t atom);
-		[DllImport(DllFileName)]
-        internal static extern void PL_put_atom(uintptr_t term, uintptr_t atomHandle);
-		// __pl_export int		PL_get_chars(term_t term, char **s, unsigned int flags);
-        // TODO wchar
-        // wchar is working well with the used UTF8 encoding see Utf8ToString
+
         [DllImport(DllFileName, CharSet = CharSet.Unicode, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int PL_get_chars(uintptr_t term, [In, Out]ref IntPtr s, uint flags);
+        internal static extern int PL_get_wchars(uintptr_t term, [In, Out]ref int len, [In, Out]ref IntPtr s, uint flags);
+
+
 
 		// __pl_export int		PL_get_long(term_t term, long *i);
 		[DllImport(DllFileName)]
@@ -400,9 +385,6 @@ namespace SbsSW.SwiPlCs
 		// __pl_export int		PL_get_float(term_t term, double *f);
 		[DllImport(DllFileName)]
         internal static extern int PL_get_float(uintptr_t term, [In, Out] ref double i);
-		// __pl_export int		PL_get_atom(term_t term, atom_t *atom);
-		//[DllImport(DllFileName)]
-        //internal static extern int PL_get_atom(uintptr_t term, [In, Out] ref uintptr_t atom_t);
 		//__pl_export int		PL_term_type(term_t term);
 		[DllImport(DllFileName)]
         internal static extern int PL_term_type(uintptr_t t);
@@ -427,36 +409,12 @@ namespace SbsSW.SwiPlCs
         //__pl_export void	PL_cons_functor_v(term_t h, functor_t fd, term_t A0);
 		//__pl_export functor_t	PL_new_functor(atom_t f, int atom);
 
-        // TODO wchar 
         [DllImport(DllFileName, CharSet = CharSet.Unicode, BestFitMapping = false, ThrowOnUnmappableChar = true)]
         internal static extern int PL_wchars_to_term([In]string chars, uintptr_t term);
-        // unused in the interface (lo level support)
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int PL_chars_to_term([In]String chars, uint term);
         [DllImport(DllFileName)]
         internal static extern void PL_cons_functor_v(uintptr_t term, uintptr_t functor_t, uintptr_t termA0);
 		[DllImport(DllFileName)]
         internal static extern uintptr_t PL_new_functor(uintptr_t atom, int a);
-
-		//__pl_export void	PL_put_string_chars(term_t term, const char *chars);
-		//__pl_export void	PL_put_string_nchars(term_t term, unsigned int len, const char *chars);
-		//__pl_export void	PL_put_list_codes(term_t term, const char *chars);
-		//__pl_export void	PL_put_list_chars(term_t term, const char *chars);
-
-        // TODO wchars
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern void PL_put_string_chars(uintptr_t term_t, string chars);
-        // TODO wchars
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern void PL_put_string_nchars(uintptr_t term_t, int len, string chars);
-        // TODO wchars
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern void PL_put_list_codes(uintptr_t term_t, string chars);
-        // TODO wchars
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern void PL_put_list_chars(uintptr_t term_t, string chars);
-		[DllImport(DllFileName)]
-        internal static extern void PL_put_list(uintptr_t term_t);
 
 		// Testing the type of a term
 		//__pl_export int		PL_is_variable(term_t term);
@@ -502,12 +460,9 @@ namespace SbsSW.SwiPlCs
         internal static extern int PL_get_nil(uintptr_t term_t);
 		[DllImport(DllFileName)]
         internal static extern int PL_unify(uintptr_t t1, uintptr_t t2);
-        [DllImport(DllFileName)]
-        internal static extern int PL_unify_integer(uintptr_t t1, Int32 n);
-        // TODO wchars
-        [DllImport(DllFileName, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int PL_unify_atom_chars(uintptr_t t1, string atom);
-
+        //__pl_export int PL_unify_wchars(term_t t, int type, size_t len, const pl_wchar_t *s)
+        [DllImport(DllFileName, CharSet = CharSet.Unicode, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int PL_unify_wchars(uintptr_t t1, int type, int len, string atom);
 
 
 		// Exceptions
@@ -678,46 +633,7 @@ typedef struct io_stream{
 
         #endregion structurs
 
-
-        [DllImport(DllFileName)]
-        internal static extern int SlineSize();
-
-
-        // from pl-stream.h
-        // PL_EXPORT(IOSTREAM *)	S__getiob(void);	/* get DLL's __iob[] address */
-        /// <summary>
-        /// 0 -> Sinput
-        /// 1 -> Soutput
-        /// 2 -> Serror
-        /// </summary>
-        /// <returns>a array of IOSTREAM * pointers</returns>
-        [DllImport(DllFileName)]
-        internal static extern IntPtr S__getiob();
-
-
-        // from pl-stream.h
-        // PL_EXPORT(IOSTREAM *)	Snew(void *handle, int flags, IOFUNCTIONS *functions);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="handle"></param>
-        /// <param name="flags">defined in pl-stream.h all with prefix SIO_</param>
-        /// <param name="functions">A set of function pointers see IOFUNCTIONS in pl-stream.h</param>
-        /// <returns> a SWI-PROLOG IOSTREAM defined in pl-stream.h</returns>
-        [DllImport(DllFileName)]
-        internal static extern IntPtr Snew(IntPtr handle, int flags, IntPtr functions);
-
-        // from pl-itf.h
-        // PL_EXPORT(int)  	PL_unify_stream(term_t t, IOSTREAM *s);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="t"></param>
-        /// <param name="iostream">the return value from Snew</param>
-        /// <returns></returns>
-        [DllImport(DllFileName)]
-        internal static extern int PL_unify_stream(uintptr_t t, IntPtr iostream);
-
+      
 
 	} // class SafeNativeMethods
 

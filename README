@@ -18,10 +18,10 @@ AUTHOR
 		E-mail:  Lesta@sbs-softwaresysteme.de 
 
 		With contributions from:
-		- Arne Skjærholt	first 64-Bit version
-		- Batu Akan			Linux support with Mono
-		- Foutelet Joel		F# sample
-		- Robert Czerny		Bug reports
+		- Arne Skjærholt    first 64-Bit version
+		- Batu Akan         Linux support with Mono
+		- Foutelet Joel     F# sample
+		- Robert Czerny     Bug reports
 		- others
 
 WEB-HOME
@@ -36,16 +36,43 @@ in the Tools - 'Extentions and Updates' menue and connect to
 https://github.com/SWI-Prolog/contrib-swiplcs
 
 Add the following lines to .git\info\exlude if you like to commit something
-*.sdf
-*.opensdf
+	*.sdf
+	*.opensdf
 
 SWI_HOME_DIR has to be set as an environment variable to the SWI-Prolog installation Path.
 
 PATH the bin directory of SWI-Prolog has to be added to the PATH environment variable.
 
+
+Compiler switches
+-----------------
+
+The following compiler switches are in the sources:
+
+- _PL_X64        Maintaind by the project files (.csproj). If defined a 64-bit version is compiled
+- _LINUX         Not maintaind!
+- _DEBUG		in SWI-cs-PlQuery.cs. Write an Exception to the Console / trace window. The release version throw the Exception.
+- USE_PRINT_MESSAGE debugging purpose in exceptions.cs
+
+
+Build binaries
+--------------
+To Build the binaries the batch script build_bin_package.bat in the project SwiPlCs-Documentation can be used.
+Therefor  winrar must be installed at c:\programme\winrar\winrar and the Sandcastle Help File Builder (shfb) must be installed.
+
+
 64-Bit
 ------
 To run the test on a 64-Bit environment got to the Test menu 
 - 'Test settings' - 'Default Processor Architecture' - chose X64
+
+
+
+Known BUGs
+----------
+
+64-Bit:
+
+- test cases for prolog callbach with war args (t_varargs_single, t_varargs) are *not* running
 
 

@@ -38,3 +38,4 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "PlQuery", Scope = "member", Target = "SbsSW.SwiPlCs.PlQuery.#NextSolution()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "NextSolution", Scope = "member", Target = "SbsSW.SwiPlCs.PlQuery.#NextSolution()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "PlQuerySwitch", Scope = "member", Target = "SbsSW.SwiPlCs.PlQuery.#Query(SbsSW.SwiPlCs.PlQuerySwitch)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "PLhalt", Scope = "member", Target = "SbsSW.SwiPlCs.LibPl.#PL_halt(System.Int32)")]

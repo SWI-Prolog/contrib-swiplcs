@@ -55,11 +55,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>SBS_OpenSource_KeyPair.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release64|AnyCPU'">
     <OutputPath>bin\Release64\</OutputPath>
@@ -151,7 +150,6 @@
     <Content Include="ChangeLog.txt" />
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="Help\concept.xml" />
-    <Content Include="Help\git_access_to_plweb.txt" />
     <Content Include="Help\Intelligence.png" />
     <Content Include="Help\introduction.htm" />
     <Content Include="Help\SwiCsPl.shfbproj" />
@@ -159,6 +157,8 @@
     <None Include="README" />
     <Content Include="Readme_publish.txt" />
     <Content Include="TODO.txt" />
+    <None Include="SBS_OpenSource_KeyPair.snk" />
+    <None Include="SwiPlCs.dll.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram2.cd" />

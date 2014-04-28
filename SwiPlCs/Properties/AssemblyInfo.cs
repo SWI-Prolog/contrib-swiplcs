@@ -27,11 +27,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SWI-Pl-cs2 - A .NET interface to SWI-Prolog ©")]
+[assembly: AssemblyTitle("SwiPlCs - A .NET interface to SWI-Prolog ©")]
 [assembly: AssemblyDescription(".NET interface to SWI-Prolog ©")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SBS-Softwaresysteme written by Uwe Lesta")]
-[assembly: AssemblyProduct("SWI-Pl-cs2")]
+[assembly: AssemblyProduct("SwiPlCs")]
 [assembly: AssemblyCopyright("Copyright © 2014 under LGPL 2.1")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -53,8 +53,8 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.1.60604.0")]
-[assembly: AssemblyFileVersion("1.1.60604.0")]
+[assembly: AssemblyVersion("1.1.60605.0")]
+[assembly: AssemblyFileVersion("1.1.60605.0")]
 
 // Not internal tests
 //[assembly: InternalsVisibleTo("NUnitTest")]
@@ -71,9 +71,7 @@ using System.Runtime.InteropServices;
 // 2.  run sn.exe -tp MyStrongNameKey.PublicKey
 // This will display your public key for you.  Copy this key. 
 
-
-
-
+// [Obsolete]
 //[assembly: InternalsVisibleTo("TestSwiPl, PublicKey=002400000480000094000000060200000024000052534131000400000100010083dc9537d3928376e3970266c16e2c02df12b991a1325c17f8ae92ac945a5a7922e2b3d2ad24eef3ee6f9b39a0523f72281cd3ab5f69c81e2903910e751d644d4c759f4b501e664dc0de71c0836c75710feba8997827c5058d8616fa1e1d21f26521275686cd0f161e7cf6300599129dd84eb90b9d2147d1de87551761c342bb")]
 
 [assembly: CLSCompliant(true)]

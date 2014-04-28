@@ -431,7 +431,12 @@ namespace SbsSW.SwiPlCs
         /// <summary>5 - PL_STRING: A Prolog string.</summary>
         PlString = 5,
         /// <summary>6 - PL_TERM: A compound term. Note that a list is a compound term ./2.</summary>
-        PlTerm = 6
+        PlTerm = 6,
+
+        /// <summary>14 - PL_CODE_LIST: [ascii...].</summary>
+        PlCodeList = 14,
+        /// <summary>15 - PL_CHAR_LIST: [h,e,l,l,o].</summary>
+        PlCharList = 15,
     }
 
 
@@ -476,15 +481,6 @@ namespace SbsSW.SwiPlCs
             }
         }
 
-        /// <summary>
-        /// This one should be for checks only e.g.
-        /// Check.Require(arg1.TermRefIntern != 0);
-        /// </summary>
-        /// TODO raus damit
-        internal uintptr_t TermRefIntern
-        {
-            get { return _termRef; }
-        }
 
         #region implementing IComparable CompareTo
 
@@ -696,7 +692,7 @@ namespace SbsSW.SwiPlCs
         {
             Check.Require(args.A0 != 0);
             var term = new PlTerm {_termRef = LibPl.PL_new_term_ref()};
-            LibPl.PL_cons_functor_v(term.TermRef, LibPl.PL_new_functor(LibPl.PL_new_atom(functor), args.Size), args.A0);
+            LibPl.PL_cons_functor_v(term.TermRef, LibPl.PL_new_functor(LibPl.PL_new_atom_wchars(functor), args.Size), args.A0);
             return term;
         }
 
@@ -739,10 +735,11 @@ namespace SbsSW.SwiPlCs
         /// </summary>
         /// <param name="text">the string</param>
         /// <returns>a new PlTerm</returns>
+        /// <remarks>NOTE: this Method do *not* work with unicode characters. Concider to use new PlTerm(test) instead.</remarks>
         static public PlTerm PlString(string text)
         {
             var t = new PlTerm {_termRef = LibPl.PL_new_term_ref()};
-            LibPl.PL_put_string_chars(t.TermRef, text);
+            LibPl.PL_unify_wchars(t.TermRef, PlType.PlString, text);
             return t;
         }
 #pragma warning disable 1573
@@ -751,7 +748,7 @@ namespace SbsSW.SwiPlCs
         static public PlTerm PlString(string text, int len)
         {
             var t = new PlTerm {_termRef = LibPl.PL_new_term_ref()};
-            LibPl.PL_put_string_nchars(t.TermRef, len, text);
+            LibPl.PL_unify_wchars(t.TermRef, PlType.PlString, len, text);
             return t;
         }
 #pragma warning restore 1573
@@ -766,7 +763,7 @@ namespace SbsSW.SwiPlCs
         static public PlTerm PlCodeList(string text)
         {
             var term = new PlTerm {_termRef = LibPl.PL_new_term_ref()};
-            LibPl.PL_put_list_codes(term.TermRef, text);
+            LibPl.PL_unify_wchars(term.TermRef, PlType.PlCodeList, text);
             return term;
         }
         #endregion
@@ -784,7 +781,7 @@ namespace SbsSW.SwiPlCs
         static public PlTerm PlCharList(string text)
         {
             var term = new PlTerm {_termRef = LibPl.PL_new_term_ref()};
-            LibPl.PL_put_list_chars(term.TermRef, text);
+            LibPl.PL_unify_wchars(term.TermRef, PlType.PlCharList, text);
             return term;
         }
         #endregion
@@ -1121,43 +1118,18 @@ namespace SbsSW.SwiPlCs
         }
 
 
-
-        //static string string_buffer;
-
-        //static long SwriteStringCanonical(IntPtr handle, string buffer, long buffersize)
-        //{
-        //    string s = buffer.Substring(0, (int)buffersize);
-        //    string_buffer = s;
-        //    return buffersize;
-        //}
-
         /// <summary>
         /// Convert a PlTerm to a string by <see href="http://www.swi-prolog.org/pldoc/doc_for?object=c(%27PL_get_chars%27)">PL_get_chars/1</see>
         /// with the CVT_WRITE_CANONICAL flag. If it fails PL_get_chars/3 is called again with REP_MB flag.
         /// </summary>
         /// <returns>return the string of a PlTerm</returns>
         /// <exception cref="PlTypeException">Throws a PlTypeException if PL_get_chars/3 didn't succeeds.</exception>
-        // MM 23.11.2010: Meines Erachtens nach führt libpl.REP_MB die gewünschte Konvertierung nach UNICODE (MultiByte) durch. Passt aber nicht zur Doku!
         public string ToStringCanonical()
         {
             string s;
-            if (0 != LibPl.PL_get_chars(TermRef, out s, LibPl.CVT_WRITE_CANONICAL | LibPl.BUF_RING | LibPl.REP_UTF8))
+            if (0 != LibPl.PL_get_wchars(TermRef, out s, LibPl.CVT_WRITE_CANONICAL | LibPl.BUF_RING | LibPl.REP_UTF8))
                 return s;
             throw new PlTypeException("text", this);
-
-            //// redirect write stream
-            // <para>This Method use <see cref="DelegateStreamWriteFunction"/> and is slow.</para>
-            //DelegateStreamWriteFunction old_write_function = PlEngine._function_write;
-            //DelegateStreamWriteFunction wf = new DelegateStreamWriteFunction(SwriteStringCanonical);
-            //PlEngine.SetStreamFunctionWrite(PlStreamType.Output, wf);
-
-            //PlQuery.PlCall("write_canonical", new PlTermV(this));
-            //PlQuery.PlCall("flush_output");
-
-            //// restore stream function
-            //PlEngine.SetStreamFunctionWrite(PlStreamType.Output, old_write_function);
-
-            //return string_buffer;
         }
 
         #endregion
@@ -1188,7 +1160,7 @@ namespace SbsSW.SwiPlCs
         /// <param name="atom">A string to unify with</param>
         public bool Unify(string atom)
         {
-            return 0 != LibPl.PL_unify_atom_chars(TermRef, atom);
+            return 0 != LibPl.PL_unify_wchars(TermRef, PlType.PlAtom, atom);
         }
 
         // <summary>
@@ -1267,7 +1239,7 @@ namespace SbsSW.SwiPlCs
                 int arity = 0;
 
                 if (0 != LibPl.PL_get_name_arity(TermRef, ref name, ref arity))
-                    return LibPl.PL_atom_chars(name);
+                    return LibPl.PL_atom_wchars(name);
 
                 throw new NotSupportedException("Only possible for compound or atoms");
                 //throw new PlTypeException("compound", this);   // FyCop Don't like this type of exception
@@ -1296,9 +1268,8 @@ namespace SbsSW.SwiPlCs
         /// <exception cref="SbsSW.DesignByContract.PreconditionException">Is thrown if the operator is used on an uninitialized PlTerm</exception>
         public static explicit operator string(PlTerm term)
         {
-            Check.Require(term.TermRefIntern != 0);
             string s;
-            if (0 != LibPl.PL_get_chars(term.TermRef, out s, LibPl.CVT_ALL | LibPl.CVT_WRITE | LibPl.BUF_RING | LibPl.REP_UTF8))
+            if (0 != LibPl.PL_get_wchars(term.TermRef, out s, LibPl.CVT_ALL | LibPl.CVT_WRITE | LibPl.BUF_RING | LibPl.REP_UTF8))
                 return s;
             throw new PlTypeException("text", term);
         }
@@ -1314,7 +1285,6 @@ namespace SbsSW.SwiPlCs
         /// <exception cref="SbsSW.DesignByContract.PreconditionException">Is thrown if the operator is used on an uninitialized PlTerm</exception>
         public static explicit operator int(PlTerm term)
         {
-            Check.Require(term.TermRefIntern != 0);
             int v = 0;
             if (0 != LibPl.PL_get_long(term.TermRef, ref v))
                 return v;
@@ -1332,7 +1302,6 @@ namespace SbsSW.SwiPlCs
         /// <exception cref="SbsSW.DesignByContract.PreconditionException">Is thrown if the operator is used on an uninitialized PlTerm</exception>
         public static explicit operator double(PlTerm term)
         {
-            Check.Require(term.TermRefIntern != 0);
             double v = 0;
             if (0 != LibPl.PL_get_float(term.TermRef, ref v))
                 return v;
@@ -1370,8 +1339,6 @@ namespace SbsSW.SwiPlCs
         /// <returns>true or false</returns>
         public static bool operator ==(PlTerm term1, PlTerm term2)
         {
-            Check.Require(term1.TermRefIntern != 0);
-            Check.Require(term2.TermRefIntern != 0);
             return LibPl.PL_compare(term1.TermRef, term2.TermRef) == 0;
         }
         /// <inheritdoc cref="op_Equality(PlTerm, PlTerm)" />
@@ -1547,7 +1514,6 @@ namespace SbsSW.SwiPlCs
         /// <param name="term0">The first <see cref="PlTerm"/> in the vector.</param>
         public PlTermV(PlTerm term0)
         {
-            Check.Require(term0.TermRefIntern != 0);
             _size = 1;
             _a0 = term0.TermRef;
         }
@@ -1558,8 +1524,6 @@ namespace SbsSW.SwiPlCs
         /// <param name="term1">The second <see cref="PlTerm"/> in the vector.</param>
         public PlTermV(PlTerm term0, PlTerm term1)
         {
-            Check.Require(term0.TermRefIntern != 0);
-            Check.Require(term1.TermRefIntern != 0);
             _size = 2;
             _a0 = LibPl.PL_new_term_refs(2);
             LibPl.PL_put_term(_a0 + 0, term0.TermRef);
@@ -1570,9 +1534,6 @@ namespace SbsSW.SwiPlCs
         /// <param name="term2">The third <see cref="PlTerm"/> in the vector.</param>
         public PlTermV(PlTerm term0, PlTerm term1, PlTerm term2)
         {
-            Check.Require(term0.TermRefIntern != 0);
-            Check.Require(term1.TermRefIntern != 0);
-            Check.Require(term2.TermRefIntern != 0);
             _size = 3;
             _a0 = LibPl.PL_new_term_refs(3);
             LibPl.PL_put_term(_a0 + 0, term0.TermRef);
@@ -1597,7 +1558,6 @@ namespace SbsSW.SwiPlCs
             ulong count = 0;
             foreach (PlTerm t in terms)
             {
-                Check.Require(t.TermRefIntern != 0);
                 LibPl.PL_put_term(_a0 + count, t.TermRef);
                 count++;
             }
@@ -1653,8 +1613,7 @@ namespace SbsSW.SwiPlCs
             {
                 if (index < 0 || index >= Size)
                     throw new ArgumentOutOfRangeException("index");
-                Check.Require(value.TermRefIntern != 0, "use of an uninitialized PlTerm. If you need a variable use PlTerm.PlVar() instead");
-                LibPl.PL_put_term(_a0 + (uint)index, value.TermRef);
+                LibPl.PL_put_term(_a0 + (uint)index, value.TermRef);  // TermRef == 0, "use of an uninitialized PlTerm. If you need a variable use PlTerm.PlVar() instead
             }
         }
 
@@ -1835,8 +1794,6 @@ namespace SbsSW.SwiPlCs
     /********************************
 	*	      ENGINE				*
 	********************************/
-
-
 
 
     #region public class PlEngine
@@ -2131,59 +2088,6 @@ namespace SbsSW.SwiPlCs
     } // class PlEngine
     #endregion
 
-
-    /****************************************************************************
-	*	      PrologServer  ( PL_initialise, pl_halt, pl_cleanup )				*
-	****************************************************************************/
-
-    #region public class PrologServer
-
-    /// <summary>
-    /// Experimental
-    /// </summary>
-    internal class PrologServer
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="argc"></param>
-        /// <param name="argv"></param>
-        /// <returns></returns>
-        static public bool IsInitialized(int argc, String[] argv)
-        {
-            return 0 != LibPl.PL_is_initialised(ref argc, ref argv);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="argc"></param>
-        /// <param name="argv"></param>
-        public PrologServer(int argc, String[] argv)
-        {
-            if (0 != LibPl.PL_is_initialised(ref argc, ref argv))
-                throw new PlLibException("PlEngine is already initialized");
-            if (0 == LibPl.PL_initialise(argc, argv))
-                throw new PlLibException("failed to initialize");
-        }
-
-        //static public void PlCleanup()
-        //{
-        //    libpl.PL_cleanup(0);
-        //}
-
-        /// <summary>Stops the PlEngine and <b>the program</b></summary>
-        /// <remarks>SWI-Prolog calls internally exit(0)</remarks>
-        static public void PLHalt()
-        {
-            //libpl.PL_cleanup(0);
-            LibPl.PL_halt(0);
-        }
-
-
-    } // PrologServer
-
-    #endregion public class PrologServer
 
 
     #region public class PlMtEngine

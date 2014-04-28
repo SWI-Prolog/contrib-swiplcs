@@ -1,4 +1,26 @@
-using System.Globalization;
+/*********************************************************
+* 
+*  Author:        Uwe Lesta
+*  Copyright (C): 2008-2014, Uwe Lesta SBS-Softwaresysteme GmbH
+*
+*  Unit-Tests for the interface from C# to Swi-Prolog - SwiPlCs
+*
+*  This library is free software; you can redistribute it and/or
+*  modify it under the terms of the GNU Lesser General Public
+*  License as published by the Free Software Foundation; either
+*  version 2.1 of the License, or (at your option) any later version.
+*
+*  This library is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  Lesser General Public License for more details.
+*
+*  You should have received a copy of the GNU Lesser General Public
+*  License along with this library; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+*********************************************************/
+
 using SbsSW.SwiPlCs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -11,30 +33,10 @@ namespace TestSwiPl
 	/// </summary>
 	
 	[TestClass]
-	public class t_PLQuery : BasePlInit
+	public class TestPlQuery : BasePlInit
 	{
 
-		#region SetUp & TearDown
-
-		//private PlFrame _frame = null;
-
-        [TestInitialize]	// befor each test
-        override public void MyTestInitialize()
-        {
-            base.MyTestInitialize();
-            //_frame = new PlFrame();
-        }
-
-        [TestCleanup]	// after each test
-        override public void MyTestCleanup()
-        {
-            //_frame.Dispose();
-            //_frame = null;
-            base.MyTestCleanup();
-        }
-		#endregion
-
-
+        private readonly string[] _abc = { "a", "b", "c" };
 
 		#region Query
         [TestMethod]
@@ -94,14 +96,13 @@ namespace TestSwiPl
         [TestMethod]
 		public void queryNextSolutionLoop_arg_term_codelist()
 		{
-			const string mm = "abc";
 			var av = new PlTermV(2);
             av[1] = PlTerm.PlCodeList("abc");
 			var q = new PlQuery("member", av);
 			int i = 0;
 			while (q.NextSolution())
 			{
-				Assert.AreEqual(mm[i++], (int)av[0]);
+				Assert.AreEqual(_abc[i++][0], (int)av[0]);
 			}
 		}
 
@@ -109,7 +110,6 @@ namespace TestSwiPl
         [TestMethod]
 		public void queryNextSolutionLoop_arg_term_listbuilded()
 		{
-			const string mm = "abc";
 			var av = new PlTermV(2);
 
             var l = PlTerm.PlTail(av[1]);
@@ -125,14 +125,13 @@ namespace TestSwiPl
 			int i = 0;
 			while (q.NextSolution())
 			{
-				Assert.AreEqual(mm[i++].ToString(CultureInfo.InvariantCulture), av[0].ToString());
+				Assert.AreEqual(_abc[i++], av[0].ToString());
 			}
 		}
 
         [TestMethod]
 		public void queryNextSolutionLoop_arg_term_StringList()
 		{
-			const string mm = "abc";
 			var av = new PlTermV(2);
 
 			av[1] = new PlTerm("[a,b,c]");
@@ -141,7 +140,7 @@ namespace TestSwiPl
 			int i = 0;
 			while (q.NextSolution())
 			{
-				Assert.AreEqual(mm[i++].ToString(CultureInfo.InvariantCulture), av[0].ToString());
+				Assert.AreEqual(_abc[i++], av[0].ToString());
 			}
 		}
 
@@ -149,13 +148,12 @@ namespace TestSwiPl
         [TestMethod]
 		public void queryNextSolutionLoop_1()
 		{
-			const string mm = "abc";
             var tv = new PlTermV(new PlTerm("A"), new PlTerm("[a,b,c]"));
 			var q = new PlQuery("member", tv);
 			int i = 0;
 			while (q.NextSolution())
 			{
-				Assert.AreEqual(mm[i++].ToString(CultureInfo.InvariantCulture), q.Args[0].ToString());
+				Assert.AreEqual(_abc[i++], q.Args[0].ToString());
 			}
 		}
 
@@ -163,24 +161,22 @@ namespace TestSwiPl
         [TestMethod]
 		public void QueryNextSolutionLoop()
 		{
-			const string mm = "abc";
 			var q = new PlQuery("member", new PlTermV(new PlTerm("A"), new PlTerm("[a,b,c]")));
 			int i = 0;
 			while (q.NextSolution())
 			{
-				Assert.AreEqual(mm[i++].ToString(CultureInfo.InvariantCulture), q.Args[0].ToString());
+				Assert.AreEqual(_abc[i++], q.Args[0].ToString());
 			}
 		}
 
         [TestMethod]
 		public void QueryForeach()
 		{
-			const string mm = "abc";
 			var q = new PlQuery("member", new PlTermV(new PlTerm("A"), new PlTerm("[a,b,c]")));
 			int i = 0;
 			foreach (PlTermV s in q.Solutions)
 			{
-				Assert.AreEqual(mm[i++].ToString(CultureInfo.InvariantCulture), s[0].ToString());
+				Assert.AreEqual(_abc[i++], s[0].ToString());
 			}
 		}
 		#endregion
@@ -285,18 +281,18 @@ namespace TestSwiPl
         #region queryStringForeach_doc
         public void QueryStringForeach()
 		{
-			const string mm = "abc";
-			var q = new PlQuery("member(A, [a,b,c])");
+            string[] mm = { "aa", "bb", "cc" };
+            var q = new PlQuery("member(A, [aa, bb, cc])");
 			int i = 0;
 			foreach (PlTermV s in q.Solutions)
 			{
-				Assert.AreEqual(mm[i++].ToString(), s[0].ToString());
+				Assert.AreEqual(mm[i++], s[0].ToString());
 			}
             // or with named variables
             i = 0;
             foreach (PlQueryVariables s in q.SolutionVariables)
             {
-                Assert.AreEqual(mm[i++].ToString(), s["A"].ToString());
+                Assert.AreEqual(mm[i++], s["A"].ToString());
             }
         }
         #endregion queryStringForeach_doc
@@ -349,13 +345,12 @@ namespace TestSwiPl
         [TestMethod]
         public void PlCallQuery1()
         {
-            const string mm = "abc";
             PlTerm t = PlQuery.PlCallQuery("A = [a,b,c]");
             Assert.IsTrue(t.IsList);
             int i = 0;
             foreach (PlTerm s in t)
             {
-                Assert.AreEqual(mm[i++].ToString(CultureInfo.InvariantCulture), s.ToString());
+                Assert.AreEqual(_abc[i++], s.ToString());
             }
         }
         [TestMethod]
@@ -436,7 +431,7 @@ namespace TestSwiPl
         public void Pl_query_version()
         {
             long v = PlQuery.Query(PlQuerySwitch.Version);
-            Assert.AreEqual(60604, v, "SWI-Prolog version number ");
+            Assert.AreEqual(60605, v, "SWI-Prolog version number ");
         }
         #endregion get_prolog_version_number_doc
 
@@ -462,7 +457,7 @@ namespace TestSwiPl
 
 
         [TestMethod]
-        public void t1()
+        public void T1()
         {
             //<COMPOUND> sqrt(8,Var1)
             var p1V = new PlTermV(2);

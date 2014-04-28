@@ -315,9 +315,9 @@ namespace SbsSW.SwiPlCs
 
         #region constructors
 
-        private PlQuery()
-        {
-        }
+        //private PlQuery()
+        //{
+        //}
 
         /// <overloads>
         /// <para>With these constructors a Prolog query can be created but not opened. To get the results see <see cref="NextSolution()"/></para>
@@ -453,7 +453,6 @@ namespace SbsSW.SwiPlCs
 
 
 
-        // TODO: make  it internal or private
         /// <summary>Provide access to the Argument vector for the query</summary>
         public PlTermV Args { get { return _av; } }
 
@@ -653,7 +652,7 @@ namespace SbsSW.SwiPlCs
         /// <param name="goal">The complete goal as a string</param>
         public static bool PlCall(string goal)
         {
-            bool bRet = false;
+            bool bRet;
             using (var q = new PlQuery("call", new PlTermV(new PlTerm(goal))))
             {
                 bRet = q.NextSolution();
