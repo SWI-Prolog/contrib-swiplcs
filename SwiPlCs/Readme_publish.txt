@@ -1,4 +1,4 @@
-﻿update changeLog.txt in SwiPlCs and SwiPlCs-Documentation/Download
+﻿update changeLog.txt in SwiPlCs (this source is copied into SwiPlCs-Documentation/Download)
 
 Versioning:
 - change the version number in 
@@ -9,11 +9,11 @@ Versioning:
 	- change version in SwiPlCs-Documentation/build_bin_package.bat
 	
 build and Test:
-- run FxCop with SWI-cs.FxCop
+- run FxCop with SWI-cs.FxCop or code analyses in Visual studio Ultimate
 - run all tests in solution
 - run project HelloWorldDemo
-- run Sandcastle help file builder with SWI-Pl-cs2\Help\SwiCsPl.shfb
-- run SwiPlCs-Documentation/build_bin_package.bat
+- run Sandcastle help file builder on ..\SwiPlCs\help\SwiCsPl.shfbproj
+- run SwiPlCs-Documentation/build_bin_package.bat (do the step above)
 - [include the new file(s) into the project]
 	- set properties 'build action' auf content
 
@@ -24,4 +24,5 @@ Publish:
 - publish Download/SwiPlCs_x.x.x.zip to http://gollem.swi.psy.uva.nl/twiki/pl/bin/view/Foreign/CSharpInterface 
 - and to http://www.swi-prolog.org/contrib/CSharp.html
 
-VSS Checkin
+Check in:
+ - be sure the SwiPlCs-Documentation\Generated folder is excluded

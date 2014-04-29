@@ -1,10 +1,32 @@
+/*********************************************************
+* 
+*  Author:        Uwe Lesta
+*  Copyright (C): 2008-2014, Uwe Lesta SBS-Softwaresysteme GmbH
+*
+*  Unit-Tests for the interface from C# to Swi-Prolog - SwiPlCs
+*
+*  This library is free software; you can redistribute it and/or
+*  modify it under the terms of the GNU Lesser General Public
+*  License as published by the Free Software Foundation; either
+*  version 2.1 of the License, or (at your option) any later version.
+*
+*  This library is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  Lesser General Public License for more details.
+*
+*  You should have received a copy of the GNU Lesser General Public
+*  License along with this library; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+*********************************************************/
 
 using System;
+using System.Linq;
 using SbsSW.SwiPlCs;
 using SbsSW.SwiPlCs.Callback;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;		// für List_ToList sample
-using System.Linq;
 
 namespace TestSwiPl
 {
@@ -13,8 +35,8 @@ namespace TestSwiPl
 	/// These Testcases are samples how to use C# methods as a callback predicate from prolog
 	/// </summary>
 
-    [TestClass()]
-    public class t_CallbackForeigenPredicate : BasePlInit
+    [TestClass]
+    public class TestCallbackForeigenPredicate : BasePlInit
 	{
 
 
@@ -28,14 +50,14 @@ namespace TestSwiPl
             PlEngine.RegisterForeign(replaceDelegate);
             for (int i = 1; i < 10; i++)
             {
-                PlTermV arg = new PlTermV(new PlTerm("test_f"), PlTerm.PlVar());
+                var arg = new PlTermV(new PlTerm("test_f"), PlTerm.PlVar());
                 PlQuery.PlCall("atom_replace", arg);
                 Assert.AreEqual("test_xx_f", arg[1].ToString(), "atom_replace failed!");
             }
         }
-        public static bool atom_replace(PlTerm atom_in, PlTerm atom_out)
+        public static bool atom_replace(PlTerm atomIn, PlTerm atomOut)
         {
-            return atom_out.Unify(atom_in.ToString().Replace("_", "_xx_"));
+            return atomOut.Unify(atomIn.ToString().Replace("_", "_xx_"));
         }
         #endregion t_in_out_doc
 
@@ -77,15 +99,15 @@ namespace TestSwiPl
             bool isComp = compound.IsCompound;
             int araty = compound.Arity;
             string name = compound.Name;
-            using (PlFrame fr = new PlFrame())
+            System.Diagnostics.Debug.Print("compound_term {0} name={1} arity={2}", isComp, name, araty);
+
+            using (new PlFrame())
             {
-                PlTerm list = PlQuery.PlCallQuery(compound.ToString() + " =.. L");
+                PlTerm list = PlQuery.PlCallQuery(compound + " =.. L");
 
                 // conversion is necessary because indexing the prolog list (list) is based on the 
                 // order of internal term references which might be *not* the order which we expect here.
-                List<PlTerm> tl = new List<PlTerm>();
-                foreach (PlTerm t in list)
-                    tl.Add(t);
+                List<PlTerm> tl = Enumerable.ToList(list);
 
                 l.Unify(tl[(int)number]);
             }
@@ -120,6 +142,7 @@ namespace TestSwiPl
             Assert.IsFalse(PlQuery.PlCall("odd(4)"));
             Assert.IsTrue(PlQuery.PlCall("odd(5)"));
         }
+// ReSharper disable once InconsistentNaming
         public static bool odd(PlTerm term)
         {
             if(term.IsInteger)
@@ -143,17 +166,17 @@ namespace TestSwiPl
                 Assert.AreEqual("[aa,bb,cc]", t.ToString(), "modify_list failed!");
             }
         }
-        public static bool modify_list(PlTerm list_in, PlTerm list_out)
+        public static bool modify_list(PlTerm listIn, PlTerm listOut)
         {
-            using (PlFrame fr = new PlFrame())
+            using (new PlFrame())
             {
-                PlTerm list = new PlTerm("[]");
-                Assert.IsTrue(list_in.IsList);
-                foreach (PlTerm elem in PlTerm.PlTail(list_in))
+                var list = new PlTerm("[]");
+                Assert.IsTrue(listIn.IsList);
+                foreach (PlTerm elem in PlTerm.PlTail(listIn))
                 {
                     list.Add(new PlTerm(elem.ToString() + elem.ToString()));
                 }
-                list_out.Unify(list);
+                listOut.Unify(list);
             }
             return true;
         }
@@ -177,8 +200,6 @@ namespace TestSwiPl
                     case 1: Assert.AreEqual("[1]", s[0].ToString()); break;
                     case 2: Assert.AreEqual("[1,2]", s[0].ToString()); break;
                     case 3: Assert.AreEqual("[1,2,3]", s[0].ToString()); break;
-                    default:
-                        break;
                 }
                 //Console.WriteLine(s[0].ToString());
                 count++;
@@ -205,7 +226,7 @@ namespace TestSwiPl
                 Assert.AreEqual("abc", t.ToString(), "my_concat_atom failed!");
             }
         }
-        public static int my_member(PlTerm term_out, PlTerm term_in, IntPtr control_handle)
+        public static int my_member(PlTerm termOut, PlTerm termIn, IntPtr controlHandle)
         {
             //switch( PL_foreign_control(handle) )
             //{ 
@@ -262,16 +283,17 @@ namespace TestSwiPl
         }
         public static bool my_concat_atom(PlTermV term1)
         {
+            System.Diagnostics.Debug.Print("my_concat_atom called with term - {0}", term1.ToString());
+
             int arity = term1.Size;
             string sRet = "";
-            PlTerm term_out = term1[arity -1];
+            PlTerm termOut = term1[arity -1];
 
             for (int i = 0; i < arity-1; i++)
             {
-                string s = term1.ToString();
                 sRet += term1[i].ToString();
             }
-            term_out.Unify(sRet);
+            termOut.Unify(sRet);
             return true;
         }
         #endregion t_varargs_doc

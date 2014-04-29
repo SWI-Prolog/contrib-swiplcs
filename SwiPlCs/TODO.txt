@@ -1,9 +1,10 @@
 ﻿
-- Tests commentieren (GPL 2), resharpen, sotrtieren, aufrüumen
+- 64-Bit Unit test t_varargs_single 
+
+- Tests commentieren, resharpen, sotrtieren, aufrüumen
 
 - Code coverage durcharbeiten und tests ergänzen / refactorn 
 
-- 64-Bit Unit test t_varargs_single zum laufen bringen
 
 
 

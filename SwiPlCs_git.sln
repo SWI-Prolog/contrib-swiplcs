@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		CustomDictionary.xml = CustomDictionary.xml
 		README = README
+		SWI-cs.FxCop = SWI-cs.FxCop
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSwiPl", "TestSwiPl\TestSwiPl.csproj", "{66F7CD01-3283-4DAD-A961-CB4D906C352B}"

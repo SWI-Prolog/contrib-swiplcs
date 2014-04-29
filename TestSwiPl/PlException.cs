@@ -1,9 +1,30 @@
+/*********************************************************
+* 
+*  Author:        Uwe Lesta
+*  Copyright (C): 2008-2014, Uwe Lesta SBS-Softwaresysteme GmbH
+*
+*  Unit-Tests for the interface from C# to Swi-Prolog - SwiPlCs
+*
+*  This library is free software; you can redistribute it and/or
+*  modify it under the terms of the GNU Lesser General Public
+*  License as published by the Free Software Foundation; either
+*  version 2.1 of the License, or (at your option) any later version.
+*
+*  This library is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  Lesser General Public License for more details.
+*
+*  You should have received a copy of the GNU Lesser General Public
+*  License along with this library; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+*********************************************************/
 
 using System;
 using SbsSW.SwiPlCs;
 using SbsSW.SwiPlCs.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;		// für List_ToList sample
 
 namespace TestSwiPl
 {
@@ -12,24 +33,24 @@ namespace TestSwiPl
 	/// TestFälle zu 'SWI-cs' dem SWI prolog interface in CSharp
 	/// </summary>
 
-    [TestClass()]
-    public class T_PlException : BasePlInit
+    [TestClass]
+    public class TestPlException : BasePlInit
 	{
         /// <summary>
         /// Sample from the documentation PlFrame
         /// </summary>
         [TestMethod]
-        public void komplexPlException()
+        public void KomplexPlException()
 		{
-            int size = 4;
-            int index = 6;
+            const int size = 4;
+            const int index = 6;
             PlTerm term = PlTerm.PlCompound("error",
                             new PlTermV(PlTerm.PlCompound("domain_error",
                                                     new PlTermV(PlTerm.PlCompound("argv", new PlTermV(size)), new PlTerm(index))
 			                                ),
 	        		        PlTerm.PlVar())
 			                );
-            PlException ex = new PlException(term);
+            var ex = new PlException(term);
             //Assert.AreEqual("Domain error: `argv(_G1, _G2, _G3, _G4)' expected, found `6'", ex.Message);
             // since swi-prolog version 5.7.6
             // Assert.AreEqual("Domain error: `argv(_G60, _G61, _G62, _G63)' expected, found `6'", ex.Message);
@@ -52,16 +73,16 @@ namespace TestSwiPl
         #region prolog_exception_sample_doc
         public void prolog_exception_sample()
         {
-            string exception_text = "test_exception";
-            Assert.IsTrue(PlQuery.PlCall("assert( (test_throw :- throw(" + exception_text + ")) )"));
+            const string exceptionText = "test_exception";
+            Assert.IsTrue(PlQuery.PlCall("assert( (test_throw :- throw(" + exceptionText + ")) )"));
             try
             {
                 Assert.IsTrue(PlQuery.PlCall("test_throw"));
             }
             catch (PlException ex)
             {
-                Assert.AreEqual(exception_text, ex.Term.ToString());
-                Assert.AreEqual("Unknown message: " + exception_text, ex.Message);
+                Assert.AreEqual(exceptionText, ex.Term.ToString());
+                Assert.AreEqual("Unknown message: " + exceptionText, ex.Message);
             }
         }
         #endregion prolog_exception_sample_doc
@@ -100,26 +121,29 @@ namespace TestSwiPl
         #endregion prolog throw c# catch
 
 
-        //[TestMethod]
-        //[Ignore]
+        [TestMethod]
         public void t_prolog_init_exception()
         {
             PlEngine.PlCleanup();
             Assert.IsFalse(PlEngine.IsInitialized);
             // this throw a PlLibException
             String[] param = { "-q", "-g", "member(A,[a," };  // -q suppressing informational and banner messages
-            // TODO i'll need something that throw a PlException on initialitzation
             try
             {
                 PlEngine.Initialize(param);
+                Assert.Fail();
+            }
+            catch (PlLibException ex)
+            {
+                // It would be nice to have something that throw a PlException on initialitzation
+                Assert.AreEqual("failed to initialize", ex.Message);
             }
             catch (Exception ex)
             {
-                string s = ex.Message;
+                Assert.Fail("Wrong Exception: " + ex.Message);
             }
             Assert.IsTrue(PlEngine.IsInitialized);
         }
-
 
 
         #region prolog throw c# catch
@@ -151,7 +175,7 @@ namespace TestSwiPl
         [ExpectedException(typeof(PlTypeException), "`list' expected, found `[a,b,c]'")]
         public void TestException_in_a_query_2()
         {
-            PlQuery plq = new PlQuery("atomic_list_concat(L, A)");
+            var plq = new PlQuery("atomic_list_concat(L, A)");
             Assert.IsTrue(plq.Variables["L"].Unify("[a,b,c]"));
             //Assert.IsTrue(plq.Variables["L"].Unify(new PlTerm("[a,b,c]")));
             foreach (PlQueryVariables vars in plq.SolutionVariables)

@@ -89,7 +89,11 @@
     <Content Include="Generated\Collapsed.gif" />
     <Content Include="Generated\ExpandAll.bmp" />
     <Content Include="Generated\Expanded.gif" />
+    <Content Include="Generated\favicon.ico" />
     <Content Include="Generated\FillNode.aspx" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlDomainException__ctor.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlDomainException__ctor_1.htm" />
+    <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlDomainException__ctor_2.htm" />
     <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException_GetObjectData.htm" />
     <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException_PlThrow.htm" />
     <Content Include="Generated\html\M_SbsSW_SwiPlCs_Exceptions_PlException_Throw.htm" />
@@ -186,6 +190,7 @@
     <Content Include="Generated\html\N_SbsSW_SwiPlCs.htm" />
     <Content Include="Generated\html\N_SbsSW_SwiPlCs_Callback.htm" />
     <Content Include="Generated\html\N_SbsSW_SwiPlCs_Exceptions.htm" />
+    <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_Exceptions_PlDomainException__ctor.htm" />
     <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_Exceptions_PlException__ctor.htm" />
     <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_Exceptions_PlLibException__ctor.htm" />
     <Content Include="Generated\html\Overload_SbsSW_SwiPlCs_Exceptions_PlTypeException__ctor.htm" />
@@ -224,6 +229,7 @@
     <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_Item.htm" />
     <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_Name.htm" />
     <Content Include="Generated\html\P_SbsSW_SwiPlCs_PlTerm_PlType.htm" />
+    <Content Include="Generated\html\R_Project_SwiCsPlDocumentation.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameter0.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameter1.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameter2.htm" />
@@ -231,6 +237,7 @@
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameterBacktrack.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_DelegateParameterVarArgs.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Callback_PlForeignSwitches.htm" />
+    <Content Include="Generated\html\T_SbsSW_SwiPlCs_Exceptions_PlDomainException.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Exceptions_PlException.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Exceptions_PlLibException.htm" />
     <Content Include="Generated\html\T_SbsSW_SwiPlCs_Exceptions_PlTypeException.htm" />
@@ -247,6 +254,7 @@
     <Content Include="Generated\icons\CFW.gif" />
     <Content Include="Generated\icons\collapse_all.gif" />
     <Content Include="Generated\icons\copycode.gif" />
+    <Content Include="Generated\icons\copycodeHighlight.gif" />
     <Content Include="Generated\icons\CopyCode_h.gif" />
     <Content Include="Generated\icons\expand_all.gif" />
     <Content Include="Generated\icons\LastChild.gif" />
@@ -283,6 +291,8 @@
     <Content Include="Generated\icons\pubstructure.gif" />
     <Content Include="Generated\icons\security.gif" />
     <Content Include="Generated\icons\static.gif" />
+    <Content Include="Generated\Images\Intelligence.png" />
+    <Content Include="Generated\Images\Tooltip.png" />
     <Content Include="Generated\Index.aspx" />
     <Content Include="Generated\Index.gif" />
     <Content Include="Generated\Index.html" />
@@ -294,6 +304,7 @@
     <Content Include="Generated\scripts\ElementCollection.js" />
     <Content Include="Generated\scripts\EventUtilities.js" />
     <Content Include="Generated\scripts\highlight.js" />
+    <Content Include="Generated\scripts\highlight_ac.js" />
     <Content Include="Generated\scripts\LanguageFilter.js" />
     <Content Include="Generated\scripts\MemberFilter.js" />
     <Content Include="Generated\scripts\script_prototype.js" />
@@ -332,7 +343,6 @@
     <Content Include="Download\ChangeLog.txt" />
     <Content Include="Download\index.htm" />
     <None Include="build_bin_package.bat" />
-    <Content Include="Generated\Help\sitemap.sitemap" />
     <Content Include="Download\SwiPlCs_1.1.578.0.zip" />
     <Content Include="Download\SwiPlCs_1.1.578.1.zip" />
     <Content Include="Download\SwiPlCs_1.1.5711.0.zip" />
@@ -341,11 +351,37 @@
     <Content Include="Download\SwiPlCs_1.1.5990.0.zip" />
     <Content Include="Download\SwiPlCs_1.1.60301.0.zip" />
     <Content Include="Download\SwiPlCs_1.1.60601.0.zip" />
-    <None Include="Generated\Help\SwiCsPl.shfb" />
+    <Content Include="Download\SwiPlCs_1.1.60605.0.zip" />
+    <Content Include="Download\SwiPlCs_1.1.60604.0.zip" />
+    <Content Include="Generated\fti\FTI_100.json" />
+    <Content Include="Generated\fti\FTI_101.json" />
+    <Content Include="Generated\fti\FTI_102.json" />
+    <Content Include="Generated\fti\FTI_103.json" />
+    <Content Include="Generated\fti\FTI_104.json" />
+    <Content Include="Generated\fti\FTI_105.json" />
+    <Content Include="Generated\fti\FTI_106.json" />
+    <Content Include="Generated\fti\FTI_107.json" />
+    <Content Include="Generated\fti\FTI_108.json" />
+    <Content Include="Generated\fti\FTI_109.json" />
+    <Content Include="Generated\fti\FTI_110.json" />
+    <Content Include="Generated\fti\FTI_111.json" />
+    <Content Include="Generated\fti\FTI_112.json" />
+    <Content Include="Generated\fti\FTI_113.json" />
+    <Content Include="Generated\fti\FTI_114.json" />
+    <Content Include="Generated\fti\FTI_115.json" />
+    <Content Include="Generated\fti\FTI_116.json" />
+    <Content Include="Generated\fti\FTI_117.json" />
+    <Content Include="Generated\fti\FTI_118.json" />
+    <Content Include="Generated\fti\FTI_119.json" />
+    <Content Include="Generated\fti\FTI_120.json" />
+    <Content Include="Generated\fti\FTI_121.json" />
+    <Content Include="Generated\fti\FTI_122.json" />
+    <Content Include="Generated\fti\FTI_95.json" />
+    <Content Include="Generated\fti\FTI_97.json" />
+    <Content Include="Generated\fti\FTI_98.json" />
+    <Content Include="Generated\fti\FTI_99.json" />
+    <Content Include="Generated\fti\FTI_Files.json" />
     <None Include="Generated\SwiCsPlDocumentation.chm" />
-    <Content Include="Generated\Help\Intelligence.png" />
-    <Content Include="Generated\Help\introduction.htm" />
-    <Content Include="Generated\Help\Tooltip.png" />
     <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_SetStreamFunctionRead.htm" />
     <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlEngine_SetStreamFunctionWrite.htm" />
     <Content Include="Generated\html\M_SbsSW_SwiPlCs_PlQueryVariables__ctor.htm" />
@@ -382,7 +418,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Generated\fti\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -429,5 +464,9 @@
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if exist $(SolutionDir)SwiPlCs-Documentation\SwiPlCs-Documentation.csproj Attrib -R $(SolutionDir)SwiPlCs-Documentation\Download\ChangeLog.txt
+if exist $(SolutionDir)SwiPlCs-Documentation\SwiPlCs-Documentation.csproj copy $(SolutionDir)SwiPlCs\ChangeLog.txt $(SolutionDir)SwiPlCs-Documentation\Download</PreBuildEvent>
   </PropertyGroup>
 </Project>

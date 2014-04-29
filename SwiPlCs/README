@@ -1,41 +1,4 @@
 ﻿
-			An interface from .Net languages to SWI-Prolog
-
-This is a .Net (CSharp) interface to SWI-Prolog. The described interface provides a 
-layer around the C-interface for natural programming from C#. The interface deals 
-with automatic type-conversion to and from Prolog, mapping of exceptions and making 
-queries to Prolog in an easy way. There is a call-back from Prolog to C#. 
-
-
-AUTHOR
-======
-		
-		Uwe Lesta
-		SBS-Softwaresysteme GmbH
-		Jasperalleee 13
-		D -38102 Braunschweig 
-
-		E-mail:  Lesta@sbs-softwaresysteme.de 
-
-WEB-HOME
-========
-
-		http://www.lesta.de/prolog/swiplcs/Generated/Index.aspx
-
-
-
-------------------------------------------------------------------------------
-
-
-SWI_HOME_DIR has to be set as an environment variable to the SWI-Prolog installation Path.
-
-
-The Project entry 'DesignByContract.cs' is a reference to 
-'..\library\DesignByContract\DesignByContract.cs'
-in the original project.
-
-So if you have a copy, simply remove this entry an add the file again.
-
 
 On Code Analyses you get: CA5122    P/Invoke declarations should not be safe-critical.    P/Invoke method '....
 

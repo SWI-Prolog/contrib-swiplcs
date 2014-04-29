@@ -1,36 +1,42 @@
 ﻿
 1.1.60605.0 
+- Test cases are running against SWI-Prolog version 6.6.5.
+- Sources are available on https://github.com/SWI-Prolog/contrib-swiplcs
+- binaries on http://www.lesta.de/prolog/swiplcs/download/index.htm
+- Hopefully completely Unicode capable (Thanks to wchars functions).
+- A lot of code cleanup.
+- BREAKING CHANGE: Libpl is an internal class now.
 
-1.1.60604.0 pre release unicode
+1.1.60604.0 pre release Unicode
 	- PlTerm.PlCompound is Obsolete. Please use new PlTerm(string) instead.
 
 1.1.60601.0 pre release -> 60602.0
 	- Change  public PlQuery(string module, string goal)
 	    it is based now on read_term_from_atom/ not any more on read_term and the redirection of the input stream.
-	- PlTerm(text), PlCompound(text) and PlQuery(goal) are using now PL_wchars_to_term istead of PL_chars_to_term
-	- also all ToString Methods relay on an Utf8 encoding which seems to work for all unicode (and othe) characters
+	- PlTerm(text), PlCompound(text) and PlQuery(goal) are using now PL_wchars_to_term instead of PL_chars_to_term
+	- also all ToString Methods relay on an Utf8 encoding which seems to work for all Unicode (and other) characters
 
 1.1.60301.0
-- CHANGE type uint (term_t) to a struckt uintptr_t which is UInt64 if _PL_X64 is defined or UInt32 
+- CHANGE type uint (term_t) to a struct uintptr_t which is UInt64 if _PL_X64 is defined or UInt32 
 - BREAKING CHANGE: SWI-PROLOG has changed the name of swipl.dll to libswipl.dll
 - ADDED Linux Support with Mono from Batu Akan. Uncomment the #define _LINUX in NativeMethods.cs and compile the sources. (untested)
 - Added a constructor of PlTermV with an argument of PlTerm[] array.
 - Port to a VS2010 solution
 - ADDED the F# sample from Foutelet Joel.
-- FIX: unicode character encoding in PlTerm.ToString() (PL_get_chars/3 now with libpl.REP_MB)
+- FIX: Unicode character encoding in PlTerm.ToString() (PL_get_chars/3 now with libpl.REP_MB)
 - Speed up PlTerm.ToStringCanonical() by using PL_get_chars/3 with 
   the new CVT_WRITE_CANONICAL flag. Thanks to Jan.
 - FIX: PlDetachEngine (wrong pointer)
-- change some testcases to reflect SWI-Prolog changes. E.g. ToString() 
+- change some test cases to reflect SWI-Prolog changes. E.g. ToString() 
   of a term foo(a, b) return foo(a,b), (without the space)
 
 1.1.5990.0
 - BREAKING CHANGE:
 	SWI-PROLOG has changed some names of dlls and exe. For details see the 
-	changelog at http://prolog.cs.vu.nl/git/pl-devel.git?a=blob_plain;f=ChangeLog;hb=HEAD
+	change log at http://prolog.cs.vu.nl/git/pl-devel.git?a=blob_plain;f=ChangeLog;hb=HEAD
 	
 1.1.5800.0
-- FIX: Crash if a query contains unicode charaters. reported by Robert Czerny.
+- FIX: Crash if a query contains Unicode characters. reported by Robert Czerny.
 - FIX: A query with two anonymous variables work wrong. reported by Robert Czerny.
 		see mailing list 'read_term and anonymous variables'.
 - FIX: a wrong capitalized query throw two exceptions. reported by Robert Czerny.

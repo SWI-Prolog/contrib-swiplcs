@@ -1,7 +1,7 @@
 ﻿/*********************************************************
 * 
 *  Author:        Uwe Lesta
-*  Copyright (C): 2009, Uwe Lesta SBS-Softwaresysteme GmbH
+*  Copyright (C): 2009-2014, Uwe Lesta SBS-Softwaresysteme GmbH
 *
 *  This library is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU Lesser General Public
@@ -20,7 +20,7 @@
 *********************************************************/
 
 // the part below is part of the documentation
-#region demo_doc
+#region demo_doc_cs
 using System;
 using SbsSW.SwiPlCs;
 
@@ -55,4 +55,4 @@ namespace HelloWorldDemo
         }
     }
 }
-#endregion demo_doc
+#endregion demo_doc_cs

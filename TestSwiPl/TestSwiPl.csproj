@@ -122,17 +122,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasePlInit.cs" />
     <Compile Include="CallbackForeigenPredicate.cs" />
     <Compile Include="UniCode.cs" />
     <Compile Include="PlEngine.cs" />
-    <Compile Include="ToDo_Thigs_to_remain.cs" />
     <Compile Include="StreamIO.cs" />
     <Compile Include="PlException.cs" />
     <Compile Include="PlFrame.cs" />
     <Compile Include="PlMtEngine.cs" />
     <Compile Include="PlLTailPrivate.cs" />
     <Compile Include="LinqPlLTail.cs" />
-    <Compile Include="Helper\BasePlInit.cs" />
     <Compile Include="LinqSwiPl.cs" />
     <Compile Include="PlLTail.cs" />
     <Compile Include="PlLTermType.cs" />

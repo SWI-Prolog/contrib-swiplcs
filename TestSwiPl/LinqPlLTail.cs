@@ -1,20 +1,38 @@
+/*********************************************************
+* 
+*  Author:        Uwe Lesta
+*  Copyright (C): 2008-2014, Uwe Lesta SBS-Softwaresysteme GmbH
+*
+*  This library is free software; you can redistribute it and/or
+*  modify it under the terms of the GNU Lesser General Public
+*  License as published by the Free Software Foundation; either
+*  version 2.1 of the License, or (at your option) any later version.
+*
+*  This library is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  Lesser General Public License for more details.
+*
+*  You should have received a copy of the GNU Lesser General Public
+*  License along with this library; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+*********************************************************/
 
-using System;
 using SbsSW.SwiPlCs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;		// für List_ToList sample
 using System.Linq;
 
 namespace TestSwiPl
 {
 
 	/// <summary>
-	/// These Testcases are mor samples how to use Linq to 
+	/// These Testcases are more samples how to use Linq to 
     /// get the values of a Plrolog list ( PlTail )
 	/// </summary>
 
-    [TestClass()]
-    public class t_LinqPLTail : BasePlInit
+    [TestClass]
+    public class TestLinqPlTail : BasePlInit
 	{
 
 
@@ -22,35 +40,47 @@ namespace TestSwiPl
 
 
         [TestMethod]
-        public void T_LinQ_2_Object_from_a_list()
+        public void LinQ_2_Object_from_a_list()
         {
-            PlTerm list = new PlTerm("[w,x,y,z]");
+            var list = new PlTerm("[w,x,y,z]");
             var result = from n in list
                          where n != "x"
                          orderby n descending
                          select n;
 
             // check
-            string mm = "zyw";
+            string[] mm = {"z", "y", "w"};
             int i = 0;
             foreach (PlTerm t in result)
-                Assert.AreEqual(mm[i++].ToString(), t.ToString());
+                Assert.AreEqual(mm[i++], t.ToString());
         }
 
         [TestMethod]
-        public void T_LinQ_2_Object_from_a_list_numbers()
+        public void LinQ_2_Object_from_a_list_numbers()
         {
-            PlTerm list = new PlTerm("[4,5,a,f,6,7,8]");
+            var list = new PlTerm("[4,5,a,f,6,7,8]");
             var result = from n in list
                          where n != "6" && n.IsNumber && (int)n >= 5
                          orderby n descending
                          select n;
 
             // check
-            string mm = "875";
+            string[] mm = { "8", "7", "5" };
             int i = 0;
             foreach (PlTerm t in result)
-                Assert.AreEqual(mm[i++].ToString(), t.ToString());
+                Assert.AreEqual(mm[i++], t.ToString());
+        }
+
+        [TestMethod]
+        public void LinQ_2_Object_from_a_list_numbers_as_int()
+        {
+            var list = new PlTerm("[4,5,a,f,6,7,8]");
+            var result = from n in list
+                where n != "6" && n.IsNumber && (int) n >= 5
+                orderby n descending
+                select (int) n;
+            // check
+            CollectionAssert.AreEqual(new[] { 8, 7, 5 }, result.ToList());
         }
 
         #endregion

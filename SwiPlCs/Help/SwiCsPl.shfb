@@ -62,6 +62,6 @@
     <CollectionTocStyle>Hierarchical</CollectionTocStyle>
     <IncludeStopWordList>True</IncludeStopWordList>
     <PlugInNamespaces>ms.vsipcc+, ms.vsexpresscc+</PlugInNamespaces>
-    <HelpFileVersion>1.1.60605.0</HelpFileVersion>
+    <HelpFileVersion>1.1.60605.0</HelpFileVersion> 
     <ContentPlacement>AboveNamespaces</ContentPlacement>
 </project>

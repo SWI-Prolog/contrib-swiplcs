@@ -1956,7 +1956,9 @@ namespace SbsSW.SwiPlCs
                 localArgv[idx++] = s;
 
             if (0 == LibPl.PL_initialise(localArgv.Length, localArgv))
+            {
                 throw new PlLibException("failed to initialize");
+            }
             if (!_isStreamFunctionReadModified)
             {
                 var rf = new DelegateStreamReadFunction(Sread_function);

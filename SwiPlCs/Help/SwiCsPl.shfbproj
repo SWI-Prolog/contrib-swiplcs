@@ -57,8 +57,8 @@
       </ComponentConfig>
     </ComponentConfigurations>
     <DocumentationSources>
-      <DocumentationSource sourceFile="E:\TFS\DotNET\Main\Komponenten\SWI-PL-CS\SWI-Pl-cs2\bin\Debug\SwiPlCs.dll" xmlns="" />
-      <DocumentationSource sourceFile="E:\TFS\DotNET\Main\Komponenten\SWI-PL-CS\SWI-Pl-cs2\bin\Debug\SwiPlCs.xml" xmlns="" />
+      <DocumentationSource sourceFile="..\bin\Debug\SwiPlCs.dll" />
+      <DocumentationSource sourceFile="..\bin\Debug\SwiPlCs.xml" />
     </DocumentationSources>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" xmlns="">The namespace SbsSW.SwiPlCs provides an .NET interface to &lt;a href='http://www.swi-prolog.org' &gt;SWI-Prolog&lt;/a&gt;</NamespaceSummaryItem>
@@ -106,6 +106,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="concept.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Tooltip.png">
+      <ImageId>Tooltip</ImageId>
+      <AlternateText>Tooltip</AlternateText>
+    </Content>
+    <Content Include="Images\Intelligence.png">
+      <ImageId>Intelligence</ImageId>
+      <AlternateText>Intelligence</AlternateText>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <!-- Import the SHFB build targets -->
   <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />

@@ -27,12 +27,17 @@ AUTHOR
 WEB-HOME
 ========
 
+		The documantation is at
 		http://www.lesta.de/prolog/swiplcs/Generated/Index.aspx
 
+		The binaries are available at 
+		http://www.lesta.de/prolog/swiplcs/download/index.htm
 ------------------------------------------------------------------------------
 
+If you want to compile SwiplCs only the project SwiPlCs is needed.
+
 To work with Visual Studio install 'Visual Studio Tools for Git' 
-in the Tools - 'Extentions and Updates' menue and connect to 
+in the Tools - 'Extensions and Updates' menu and connect to 
 https://github.com/SWI-Prolog/contrib-swiplcs
 
 Add the following lines to .git\info\exlude if you like to commit something
@@ -49,9 +54,11 @@ Compiler switches
 
 The following compiler switches are in the sources:
 
-- _PL_X64        Maintaind by the project files (.csproj). If defined a 64-bit version is compiled
-- _LINUX         Not maintaind!
-- _DEBUG		in SWI-cs-PlQuery.cs. Write an Exception to the Console / trace window. The release version throw the Exception.
+- _PL_X64        Maintained by the project files (.csproj). If defined a 64-bit version 
+                 is compiled
+- _LINUX         Not maintained!
+- _DEBUG         in SWI-cs-PlQuery.cs. Write an Exception to the Console / trace window. 
+                 The release version throw the Exception.
 - USE_PRINT_MESSAGE debugging purpose in exceptions.cs
 
 
@@ -73,6 +80,4 @@ Known BUGs
 
 64-Bit:
 
-- test cases for prolog callbach with war args (t_varargs_single, t_varargs) are *not* running
-
-
+- test cases for Prolog call back with war args (t_varargs_single, t_varargs) are *not* running

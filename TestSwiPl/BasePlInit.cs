@@ -1,8 +1,24 @@
 ﻿/*********************************************************
- * 
- *  Copyright (c)  SBS-Softwaresysteme.de  2009
- *				written By Uwe Lesta
- * 
+* 
+*  Author:        Uwe Lesta
+*  Copyright (C): 2008-2014, Uwe Lesta SBS-Softwaresysteme GmbH
+*
+*  Unit-Tests for the interface from C# to Swi-Prolog - SwiPlCs
+*
+*  This library is free software; you can redistribute it and/or
+*  modify it under the terms of the GNU Lesser General Public
+*  License as published by the Free Software Foundation; either
+*  version 2.1 of the License, or (at your option) any later version.
+*
+*  This library is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+*  Lesser General Public License for more details.
+*
+*  You should have received a copy of the GNU Lesser General Public
+*  License along with this library; if not, write to the Free Software
+*  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
 *********************************************************/
 
 using System;
@@ -17,41 +33,24 @@ namespace TestSwiPl
     [TestClass]
     public class BasePlInit
     {
-        public BasePlInit()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
 
-        private TestContext testContextInstance;
 
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         #region Additional test attributes
 
-        static private String[] empty_param = { "-q" };  // suppressing informational and banner messages
-        //        static public String[] empty_param = { "-nosignals" };
-        //        static public String[] empty_param = { "--quit"};
+        static private readonly String[] EmptyParam = { "-q" };  // suppressing informational and banner messages
+        //        static public String[] EmptyParam = { "-nosignals" };
+        //        static public String[] EmptyParam = { "--quit"};
         static private void InitializePlEngine()
         {
             if (!PlEngine.IsInitialized)
             {
-                PlEngine.Initialize(empty_param);
+                PlEngine.Initialize(EmptyParam);
             }
         }
 
@@ -63,22 +62,22 @@ namespace TestSwiPl
         //public static void MyClassInitialize(TestContext testContext)
         //{
         //}
-        //
+
         //Use ClassCleanup to run code after all tests in a class have run
         //[ClassCleanup()]
         //public static void MyClassCleanup()
         //{
         //}
-        //
+
         //Use TestInitialize to run code before running each test
-        [TestInitialize()]
+        [TestInitialize]
         virtual public void MyTestInitialize()
         {
             InitializePlEngine();
         }
-        //
+
         //Use TestCleanup to run code after each test has run
-        [TestCleanup()]
+        [TestCleanup]
         virtual public void MyTestCleanup()
         {
             PlEngine.PlCleanup();
@@ -89,9 +88,8 @@ namespace TestSwiPl
         #region helper
         protected int list_length(PlTerm list)
         {
-            // PlTerm list_len = new PlTerm();
-            PlTerm list_len = PlTerm.PlVar();
-            PlTermV args = new PlTermV(list, list_len);
+            var listLen = PlTerm.PlVar();
+            var args = new PlTermV(list, listLen);
             Assert.IsTrue(PlQuery.PlCall("length", args));
             return (int)args[1];
         }
