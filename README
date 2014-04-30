@@ -81,3 +81,4 @@ Known BUGs
 64-Bit:
 
 - test cases for Prolog call back with war args (t_varargs_single, t_varargs) are *not* running
+  see remarks on DelegateParameterVarArgs in SWI-cs.cs

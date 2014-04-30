@@ -201,7 +201,27 @@ namespace SbsSW.SwiPlCs.Callback
     /// indexer of PlTermV see <see cref="PlTermV"/>. The amount of parameters is in <see cref="PlTermV.Size"/>
     /// </param>
     /// <returns>True for succeeding otherwise false for fail</returns>
-    /// <remarks>TODO: This do *NOT* work on 64-Bit systems. Hope to Fix this in the future.</remarks>
+    /// <remarks>
+    /// <para> TODO: This do *NOT* work on 64-Bit systems. Hope to Fix this in the future.</para>
+    /// <para>
+    /// It seems to be impossible to marshal two parameter which are bigger than 8 byte 
+    /// into one struct. Perhaps there is a way in CLI :-(
+    /// </para>
+    /// The problem are the parameters of the call back method. These are in C
+    /// <c>foreign_t (f)(term_t t0, int a, control_t ctx))</c> (see SWI-cpp.h)
+    /// If we provide 
+    /// <c>DelegateParameterVarArgs(PlTerm term, int arity);</c>
+    /// and do in the callback Method something like
+    /// <code>
+    /// public static bool my_call_back(PlTerm term, int arity)
+    /// {
+    ///      PlTermV args = new PlTermV(term, arity);   // This constructor do *not* exist
+    /// }
+    /// </code>
+    /// every thing work fine. The drawback is this ugly ctor. It might be better to do
+    /// <c>PlTermV args = PlTermV.VarArgs(term, arity);</c>
+    /// with a strong recommendation to use it *OINLY* in this call back scenario.
+    /// </remarks>
     //[System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute(System.Runtime.InteropServices.CallingConvention.Cdecl)]
     public delegate bool DelegateParameterVarArgs(PlTermV termVector);
 
@@ -224,6 +244,7 @@ namespace SbsSW.SwiPlCs.Callback
     #endregion delagates for C# callbacks
 
 } // namespace SbsSW.SwiPlCs.Callback
+
 
 
 namespace SbsSW.SwiPlCs.Streams

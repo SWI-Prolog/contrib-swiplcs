@@ -75,8 +75,11 @@ int main(int argc, char* argv[])
 	printf("size IOFUNCTIONS %d \n", iof);
 	printf("size single_func_ptr %d \n", single_func_ptr);
 
-    size_t val_of_size_t;
-	printf("size val_of_size_t %d \n", sizeof(val_of_size_t));
+    //size_t val_of_size_t;
+	printf("size val_of_size_t %d \n", sizeof(size_t));
+	printf("size short %d \n", sizeof(short));
+	printf("size int %d \n", sizeof(int));
+	printf("size long %d \n", sizeof(long));
 
 	// Asserts
 #if _PL_X64

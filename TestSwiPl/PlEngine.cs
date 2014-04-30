@@ -119,13 +119,13 @@ namespace TestSwiPl
             System.Threading.Thread myThread3 = new System.Threading.Thread(TreadWork.CallPl);
             myThread.Start();
             System.Diagnostics.Trace.WriteLine("eins");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(100);
             myThread2.Start();
             System.Diagnostics.Trace.WriteLine("zwei");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(100);
             myThread3.Start();
             System.Diagnostics.Trace.WriteLine("drei");
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(100);
         }
 
         [TestMethod]
