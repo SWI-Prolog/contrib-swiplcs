@@ -80,6 +80,7 @@ int main(int argc, char* argv[])
 	printf("size short %d \n", sizeof(short));
 	printf("size int %d \n", sizeof(int));
 	printf("size long %d \n", sizeof(long));
+	printf("size uintptr_t %d \n", sizeof(uintptr_t));
 
 	// Asserts
 #if _PL_X64

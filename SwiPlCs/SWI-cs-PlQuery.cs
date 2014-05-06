@@ -666,14 +666,22 @@ namespace SbsSW.SwiPlCs
 
         #region PlCallQuery
 
-        //TODO: <umstellen auf PlQuery(string)/>
         /// <summary>
-        /// <para>NOTE:will be changed in the near future.</para>
-        /// return the solution of a query which is called once by call
-        /// Throw an ArgumentException if there is no or more than one variable in the goal
+        /// return the solution of a query which is called once by call PlQuery(goal)
         /// </summary>
         /// <param name="goal">a goal with *one* variable</param>
         /// <returns>the bound variable of the first solution</returns>
+        /// <exception cref="ArgumentException">Throw an ArgumentException if there is no or more than one variable the goal.</exception>
+        /// <example>
+        ///     <para>This sample shows simple unifikation.</para>
+        ///     <code source="..\..\TestSwiPl\PlQuery.cs" region="PlCallQuery_direct_1_doc" />
+        /// 
+        ///     <para>This sample shows how a simple calculation can be done by a predicate.</para>
+        ///     <code source="..\..\TestSwiPl\PlQuery.cs" region="PlCallQuery_direct_1_doc" />
+        /// 
+        ///     <para>This sample shows both how to get the working_directory from SWI-Prolog.</para>
+        ///     <code source="..\..\TestSwiPl\PlQuery.cs" region="PlCallQuery_direct_3_doc" />
+        /// </example>
         public static PlTerm PlCallQuery(string goal)
         {
             return PlCallQuery(ModuleDefault, goal);
@@ -690,10 +698,15 @@ namespace SbsSW.SwiPlCs
             {
                 // find the variable or throw an exception
                 PlTerm? t = null;
-                for (int i = 0; i < q._av.Size; i++)
+                if (q.Variables.Count == 1)
                 {
-                    if (q._av[i].IsVar)
+                    t = new PlTerm(q.Variables[0].Value.TermRef);
+                }
+                else
+                {
+                    for (int i = 0; i < q._av.Size; i++)
                     {
+                        if (!q._av[i].IsVar) continue;
                         if (t == null)
                         {
                             t = new PlTerm(q._av[i].TermRef);

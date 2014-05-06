@@ -1,4 +1,5 @@
-﻿
+﻿ - FIX PlCallQuery with one Variable. PlCallQuery("working_directory(O, O)") work now also. Added Sampels. Update documentation.
+
 1.1.60605.0 
 - Test cases are running against SWI-Prolog version 6.6.5.
 - Sources are available on https://github.com/SWI-Prolog/contrib-swiplcs

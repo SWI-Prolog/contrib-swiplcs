@@ -345,8 +345,10 @@ namespace TestSwiPl
         [TestMethod]
         public void PlCallQuery1()
         {
+            #region PlCallQuery_direct_1_doc
             PlTerm t = PlQuery.PlCallQuery("A = [a,b,c]");
             Assert.IsTrue(t.IsList);
+            #endregion PlCallQuery_direct_1_doc
             int i = 0;
             foreach (PlTerm s in t)
             {
@@ -356,11 +358,21 @@ namespace TestSwiPl
         [TestMethod]
         public void PlCallQuery2()
         {
+            #region PlCallQuery_direct_2_doc
             PlTerm t = PlQuery.PlCallQuery("atom_concat(a, b, X)");
-            Assert.IsTrue(t.IsAtom);
             Assert.AreEqual("ab", t.ToString());
+            #endregion PlCallQuery_direct_2_doc
+        }
+        [TestMethod]
+        public void PlCallQuery3()
+        {
+            #region PlCallQuery_direct_3_doc
+            PlTerm t = PlQuery.PlCallQuery("working_directory(O, O)");
+            Assert.IsTrue(t.ToString().EndsWith("contrib-swiplcs/testswipl/bin/debug/"), "Path is not correct:" + t.ToString());
+            #endregion PlCallQuery_direct_3_doc
         }
         #endregion
+
 
 
         #region compound queries
