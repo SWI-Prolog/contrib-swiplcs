@@ -131,9 +131,9 @@
     <Compile Include="PlFrame.cs" />
     <Compile Include="PlMtEngine.cs" />
     <Compile Include="PlLTailPrivate.cs" />
-    <Compile Include="LinqPlLTail.cs" />
+    <Compile Include="LinqPlTail.cs" />
     <Compile Include="LinqSwiPl.cs" />
-    <Compile Include="PlLTail.cs" />
+    <Compile Include="PlTail.cs" />
     <Compile Include="PlLTermType.cs" />
     <Compile Include="PlQuery.cs" />
     <Compile Include="PlTerm.cs" />

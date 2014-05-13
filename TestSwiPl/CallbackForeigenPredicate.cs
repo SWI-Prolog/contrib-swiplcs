@@ -255,6 +255,7 @@ namespace TestSwiPl
         [TestMethod]
         public void t_varargs_single()
         {
+// ReSharper disable once CSharpWarnings::CS0618
             Delegate d = new DelegateParameterVarArgs(my_concat_atom);
             PlEngine.RegisterForeign("my_concat_atom", 4, d);
             for (int i = 1; i < 10; i++)

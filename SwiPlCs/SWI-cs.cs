@@ -120,7 +120,7 @@ namespace SbsSW.SwiPlCs.Callback
     /// <remarks>
     /// <note>It is only possible to call <see langword="static"/> methods</note>
     /// </remarks>
-    /// <seealso cref="SbsSW.SwiPlCs.PlEngine.RegisterForeign(string, System.Delegate)"/>
+    /// <seealso cref="M:SbsSW.SwiPlCs.PlEngine.RegisterForeign(string, System.Delegate)"/>
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute]
     class NamespaceDoc
     {
@@ -179,7 +179,7 @@ namespace SbsSW.SwiPlCs.Callback
     /// <param name="term2"></param>
     /// <returns>true for succeeding otherwise false for fail</returns>
     /// <seealso cref="M:SbsSW.SwiPlCs.PlEngine.RegisterForeign(System.Delegate)"/>
-    /// <seealso cref="M:SbsSW.SwiPlCs.PlEngine"/>
+    /// <seealso cref="T:SbsSW.SwiPlCs.PlEngine"/>
     //[System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute(System.Runtime.InteropServices.CallingConvention.Cdecl)]
     public delegate bool DelegateParameter2(PlTerm term1, PlTerm term2);
 
@@ -193,6 +193,7 @@ namespace SbsSW.SwiPlCs.Callback
 
     /// <summary>
     /// <para>With this delegate you can build a call-back predicate with a variable amount of parameters.</para>
+    /// <para>This delegate is merkes as Obsolete. DelegateParameterVarArgs is deprecated, please use DelegateParameter1 to 3 instead.</para>
     /// </summary>
     /// <example>
     ///     <code source="..\..\TestSwiPl\CallbackForeigenPredicate.cs" region="t_varargs_doc" />
@@ -223,6 +224,7 @@ namespace SbsSW.SwiPlCs.Callback
     /// with a strong recommendation to use it *OINLY* in this call back scenario.
     /// </remarks>
     //[System.Runtime.InteropServices.UnmanagedFunctionPointerAttribute(System.Runtime.InteropServices.CallingConvention.Cdecl)]
+    [Obsolete("DelegateParameterVarArgs is deprecated, please use DelegateParameter1 to 3 instead.")]
     public delegate bool DelegateParameterVarArgs(PlTermV termVector);
 
 
@@ -471,7 +473,9 @@ namespace SbsSW.SwiPlCs
 
     /// <summary>
     ///  <para>The PlTerm <see langword="struct"/> plays a central role in conversion and operating on Prolog data.</para>
-    ///  <para>PlTerm implements <see cref="System.IComparable"/> to support ordering in <see cref="System.Linq"/> queries if PlTerm is a List.</para>
+    ///  <para>PlTerm implements <see cref="System.IComparable"/> to support ordering in <see cref="T:System.Linq"/> queries if PlTerm is a List.
+    /// see <see cref="PlTerm.Append"/> for examples.
+    /// </para>
     ///  <para>Creating a PlTerm can be done by the <see href="Overload_SbsSW_SwiPlCs_PlTerm__ctor.htm">Constructors</see> or by the following static methods:</para>
     ///  <para>PlVar(), PlTail(), PlCompound, PlString(), PlCodeList(), PlCharList() (see remarks)</para>
     /// </summary>
@@ -891,10 +895,14 @@ namespace SbsSW.SwiPlCs
         /// This method returns TRUE if the unification succeeded and FALSE otherwise. No exceptions are generated.
         /// </summary>
         /// <example>
-        ///     <code source="..\..\TestSwiPl\PlLTail.cs" region="List_Append_from_doc" />
+        ///     <code source="..\..\TestSwiPl\PlTail.cs" region="List_Append_from_doc" />
         /// </example>
         /// <param name="term">The PlTerm to append on the list.</param>
         /// <returns>true if successful otherwise false</returns>
+        /// <example>
+        /// <para>The following samples shows how <see cref="T:System.Linq"/> can be used to filter a Prolog list.</para>
+        /// <code source="..\..\TestSwiPl\LinqPlTail.cs" region="query_prologlist_PlTail_with_Linq_doc" />
+        /// </example>
         public bool Append(PlTerm term)
         {
             Check.Require(IsList || IsVar);
@@ -937,7 +945,7 @@ namespace SbsSW.SwiPlCs
         /// Appends a list ( PlTail ) to a list by creating a new one and copy all elements
         /// </summary>
         /// <example>
-        /// <code source="..\..\TestSwiPl\PlLTail.cs" region="List_Add_list_doc" />
+        /// <code source="..\..\TestSwiPl\PlTail.cs" region="List_Add_list_doc" />
         /// </example>
         /// <param name="listToAppend">a closed list</param>
         /// <returns>True if Succeed</returns>

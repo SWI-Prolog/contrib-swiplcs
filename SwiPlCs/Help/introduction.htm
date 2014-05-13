@@ -164,8 +164,8 @@
                 </div>
                 <p>
                     For further samples see the examples in
-                    <see cref="SbsSW.SwiPlCs" />
-                    and <see cref="SbsSW.SwiPlCs.PlEngine" />.
+                    <see cref="N:SbsSW.SwiPlCs" />
+                    and <see cref="T:SbsSW.SwiPlCs.PlEngine" />.
                 </p>
                 <p>
                     The class <see cref="SbsSW.SwiPlCs.PlQuery" /> is the key to ask SWI-Prolog for proofs or solutions.
@@ -181,15 +181,26 @@
             <div class="sectionTitle">Programming tips</div>
             <div class="sectionContent">
                 <p>
-                    I strongly recomanate to use <see cref="SbsSW.SwiPlCs.PlQuery"/> in a <see cref="http://msdn.microsoft.com//library/zhdeatwt.aspx">using statment</see> using statment like in the sample program above.
+                    I strongly recomanate to use <see cref="SbsSW.SwiPlCs.PlQuery"/> in a <see cref="http://msdn.microsoft.com/library/zhdeatwt.aspx">using statment</see> using statment like in the sample program above.
                     <br />
-                    An alternitive is to call <see cref="M:SbsSW.SwiPlCs.PlQuery.Dispose">Dispose</see> explicitly like in the sample below.
+                    An alternitive is to call <see cref="SbsSW.SwiPlCs.PlQuery.Dispose()"/> explicitly like in the sample below.
                 </p>
                 <div class="code">
                     <code source="..\..\TestSwiPl\PlQuery.cs" region="explicit_query_dispose_doc" lang="cs" />
                 </div>
                 <p>
                     Note that access to the query Variables is impossible after Dispose().
+                </p>
+                <p>
+                    In the samples you find often something like: 
+                    <div class="code">
+                        <code lang="cs">
+                            Assert.AreEqual(2, new PlTerm("a(a, b)").Arity);
+                        </code>
+                    </div>
+                    The Method Assert.AreEqual comes from the <see cref="Microsoft.VisualStudio.TestTools.UnitTesting"/> namespace 
+                    and can be ignored in your program. It is only there because the samples in the documentation are directly 
+                    generated from the unit tests.
                 </p>
             </div>
         </div>

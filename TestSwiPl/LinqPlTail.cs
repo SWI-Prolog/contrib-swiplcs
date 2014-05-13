@@ -3,6 +3,8 @@
 *  Author:        Uwe Lesta
 *  Copyright (C): 2008-2014, Uwe Lesta SBS-Softwaresysteme GmbH
 *
+*  Unit-Tests for the interface from C# to Swi-Prolog - SwiPlCs
+*
 *  This library is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU Lesser General Public
 *  License as published by the Free Software Foundation; either
@@ -35,10 +37,13 @@ namespace TestSwiPl
     public class TestLinqPlTail : BasePlInit
 	{
 
+	    [TestMethod]
+	    public void xxx()
+	    {
+            Assert.AreEqual(2, new PlTerm("a(a, b)").Arity);
+        }
 
-		#region query a prologlist ( PlTail ) with Linq
-
-
+	    #region query_prologlist_PlTail_with_Linq_doc
         [TestMethod]
         public void LinQ_2_Object_from_a_list()
         {
@@ -47,7 +52,6 @@ namespace TestSwiPl
                          where n != "x"
                          orderby n descending
                          select n;
-
             // check
             string[] mm = {"z", "y", "w"};
             int i = 0;
@@ -63,7 +67,6 @@ namespace TestSwiPl
                          where n != "6" && n.IsNumber && (int)n >= 5
                          orderby n descending
                          select n;
-
             // check
             string[] mm = { "8", "7", "5" };
             int i = 0;
@@ -82,7 +85,6 @@ namespace TestSwiPl
             // check
             CollectionAssert.AreEqual(new[] { 8, 7, 5 }, result.ToList());
         }
-
         #endregion
 
     }
