@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ba67f09f-f621-485a-96aa-d4948c740948" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+	  <summary>
+	  </summary>
+	  <introduction>
+	  </introduction>
+	  <section address="PowerShell">
+		  <title>Using of the PowerShell as a scripting engine for SWi-Prolog</title>
+		  <content>
+			  <para>
+				  The <application>PowerShell</application> is a efficient scripting engine. 
+				  It can be used to automate or test Applications. 
+				  The PowerShell command <codeInline>ISE</codeInline> start an interactive GUI with <quoteInline>IntelliSense</quoteInline>.
+			  </para>
+			  <para>
+				  To execute PowerShell scripts e.g.
+			  </para>
+			  <para>
+				  <codeInline>powershell -File powershell_sample.ps1</codeInline>
+			  </para>
+			  <para>
+				  müssen entsprechende Rechte vorhanden sein. Um unsegnierte scripte auszuführen können, müssen
+				  die rechte beispielsweise mit <codeInline>powershell Set-ExecutionPolicy RemoteSigned</codeInline>
+				  gesetzt werden (Powershell muss dafür mit Administrator rechten laufen).
+				  Siehe auch  <codeInline>powershell Set-ExecutionPolicy RemoteSigned</codeInline>
+			  </para>
+			  <para>
+				  Die verwendete PowerShell verion lässt sich mit dem Befehl (bzw. Cmdlet) <codeInline>Get-Host</codeInline>
+				  ermittel.
+			  </para>
+
+			  <autoOutline />
+		  </content>
+		  <sections>
+			  <section address="PowerShell_2.0">
+				  <title>Vorbereitungen für die Powershell 2.0</title>
+				  <content>
+					  <para>
+						  Um die <command>PowerShell</command> 2.0 zu nutzen muss diese in die lage versetzt werden .Net assamlies
+						  der Version 4.0 zu laden, da die Interface assamblies gegen die .Net Framewor Version 4.0 kompiliert sind.
+						  Dafür sollte die Datei <system>%windir%\System32\WindowsPowerShell\v1.0\powershell.exe.config</system>
+						  folgenden inhalt haben:
+					  </para>
+					  <code  lang="xml">
+						  <![CDATA[
+					<?xml version="1.0"?> 
+    				<configuration> 
+    					<startup useLegacyV2RuntimeActivationPolicy="true"> 
+    						<supportedRuntime version="v4.0.30319"/> 
+    						<supportedRuntime version="v2.0.50727"/> 
+    					</startup> 
+    				</configuration>
+			    ]]>
+					  </code>
+				  </content>
+			  </section>
+			  <section address="PowerShell_Beispiel">
+				  <title>PowerShell script Beispiel</title>
+				  <content>
+					  <para>
+						  Wenn Sie anschliessend in dem Verzeuchniss <foreignPhrase>bin_package</foreignPhrase> mit dem Befehl:
+					  </para>
+					  <code>powershell -File powerShell_sample.ps1 > powerShell_output.txt</code>
+					  <!-- 
+					  Für die erzeugung dieser Hilfe:
+					  powershell -File ..\help\powerShell_sample.ps1 > ..\help\powerShell_output.txt 
+					  -->
+					  <para>
+						  Das im folgenden abgebildete script <codeInline>powershell_sample.ps1</codeInline> starten:
+					  </para>
+					  <!--
+					  <code source="powerShell_sample.ps1" />
+					  <para>
+						  Wird folgensde Ausgabe erzeugt:
+					  </para>
+					  <code source="powerShell_output.txt" lang="txt" />
+					  -->
+
+				  </content>
+			  </section>
+		  </sections>
+	  </section>
+	  <relatedTopics>
+	  </relatedTopics>
+  </developerConceptualDocument>
+</topic>

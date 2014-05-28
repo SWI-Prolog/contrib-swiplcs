@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c1af7c87-0a04-4ac5-b33e-4d93f296dec5" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<summary>
+			<para>SwiPlCs - A CSharp class library to connect .NET languages with SWI-Prolog</para>
+		</summary>
+		<introduction>
+			<para>
+				This document describes a CSharp interface to <a href="http://www.swi-prolog.org">SWI-Prolog</a>.
+				The described interface
+				provides a layer around the C-interface for natural programming from C#. The interface
+				deals with automatic type-conversion to and from Prolog, mapping of exceptions and
+				making queries to Prolog in an easy way. There is a call-back from Prolog to C#.
+			</para>
+
+			<autoOutline />
+
+		</introduction>
+		<!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+		<section address="Introduction">
+			<title>Introduction</title>
+			<content>
+				<para>
+					The first version of this Interface was more or less a port of the C++ interface.
+					Now the naming is more '.Net' like and the interface provides a number of features
+					that make queries to SWI-Prolog very easy and powerful. Using programmable type-conversion
+					(casting), native data-types can be translated automatically into appropriate Prolog
+					types. Automatic destruction deals with most of the cleanup required.
+				</para>
+			</content>
+		</section>
+
+		<section address="Acknowledgements">
+			<title>Acknowledgements</title>
+			<content>
+				<para>
+					I would like to thank Jan Wielemaker for answering many questions and for his comments.
+				</para>
+				<para>
+					Also to Arne Skjærholt for the first 64-Bit version (SwiPlCs64.dll) and Batu Akan for the Mono code.
+					Foutelet Joel provide the F# sample.
+				</para>
+			</content>
+		</section>
+
+		<section address="Download">
+			<title>Download binaries</title>
+			<content>
+				<para>
+					Here is the link to download the latest binaries or older versions.
+					<a href='../download/index.htm'>Download page</a>
+					<link xlink:href="DownloadPage">Download page</link>
+				</para>
+				<para>
+					At present I only publish the binaries including the documentation on this site.
+					The sources, which are under LGPL 2, are on
+					<externalLink>
+						<linkText>GitHub</linkText>
+						<linkAlternateText>GitHub/SWI-Prolog/contrib-swiplcs</linkAlternateText>
+						<linkUri>https://github.com/SWI-Prolog/contrib-swiplcs</linkUri>
+					</externalLink>
+				</para>
+			</content>
+		</section>
+
+		<section address="Versions">
+			<title>Versions</title>
+			<content>
+				<para>
+					The latest version work with SWI-Prolog 6.3.1 and higher.
+				</para>
+				<para>
+					The AssemblyVersion number, e.g. 1.1.60601.0, can be interpreted as follows:
+				</para>
+				<list class="bullet">
+					<listItem>
+						<para>1     - major version</para>
+					</listItem>
+					<listItem>
+						<para>1     - minor version</para>
+					</listItem>
+					<listItem>
+						<para>60601 - SWI-Prolog version 6.6.1 (test cases run against this prolog version)</para>
+					</listItem>
+					<listItem>
+						<para>0     - patch level version</para>
+					</listItem>
+				</list>
+			</content>
+		</section>
+
+		<section address="GettingStarted">
+			<title>Getting started</title>
+			<content>
+				<para>
+					Copy SwiPlCs.dll or SwiPlCs64.dll and SwiPlCs.XML where ever you want and add a project reference
+					to SwiPlCs.dll.
+				</para>
+				<para>
+					After that IntelliSense and tool tips should be available.
+				</para>
+				<para>
+					<mediaLinkInline>
+						<image xlink:href="Intelligence"/>
+					</mediaLinkInline>
+				</para>
+				<para>
+					Make sure that libswipl.dll and its dependencies could be found by the system. For
+					the sample below it is:
+				</para>
+				<list class="bullet">
+					<listItem>
+						<para>libswipl.dll</para>
+					</listItem>
+					<listItem>
+						<para>pthreadGC2.dll</para>
+					</listItem>
+					<listItem>
+						<para>libgmp-10.dll</para>
+					</listItem>
+					<listItem>
+						<para>files.dll</para>
+					</listItem>
+				</list>
+				<para>
+					For a big application it could be a lot more.
+				</para>
+				<para>
+					TIP: For development add the SWI-prolog bin directory to the PATH environment variable.
+					Don't forget to restart Visual Studio after that. VS must recognize the new environment for debugging.
+				</para>
+				<para>
+					Basically windows search first in the folder where the executable resist than in
+					the windows system directory and at least in the directories that are listed in
+					the PATH environment variable. For details see
+					<externalLink>
+						<linkText>Dynamic-Link Library Search Order</linkText>
+						<linkUri>http://msdn.microsoft.com/en-us/library/ms682586.aspx</linkUri>
+					</externalLink>
+				</para>
+				<para>
+					If libswipl.dll or one of its dependencies could not found you will recive an error like
+					<errorInline>System.IO.FileNotFoundException: Das angegebene Modul wurde nicht gefunden. (Ausnahme von HRESULT: 0x8007007E)</errorInline>
+				</para>
+				<para>
+					An other common error is:
+				</para>
+				<computerOutput>
+					SWI-Prolog: [FATAL ERROR:
+					Could not find system resources]
+					Failed to release stacks
+				</computerOutput>
+				<para>
+					To fix this add the <environmentVariable>SWI_HOME_DIR</environmentVariable> environment variable as described in
+					<externalLink>
+						<linkText>SWI-Prolog FAQ FindResources</linkText>
+						<linkUri>http://www.swi-prolog.org/FAQ/FindResources.html</linkUri>
+					</externalLink>
+					with a statment like the following befor calling PlEngine.Initialize.
+				</para>
+				<para>
+					<codeInline >Environment.SetEnvironmentVariable("SWI_HOME_DIR", @"the_PATH_to_boot32.prc");</codeInline>
+				</para>
+			</content>
+		</section>
+
+		<section address="FirstProgram">
+			<title>First program</title>
+			<content>
+				<para>
+					A sample says more then I want to write here.
+				</para>
+				<code source="..\..\HelloWorldDemo\Program.cs" region="demo_doc_cs" language="cs" />
+				<para>
+					Here is how to use the library in F#. Many thanks to Foutelet Joel for this sample.
+				</para>
+				<code source="..\..\HelloWorldDemoFs\Program.fs"  region="demo_doc_fs"  language="fs" />
+				<para>
+					For further samples see the examples in
+					<codeEntityReference>N:SbsSW.SwiPlCs</codeEntityReference>
+					and
+					<codeEntityReference>T:SbsSW.SwiPlCs.PlEngine</codeEntityReference>
+				</para>
+				<para>
+					The class <codeEntityReference>T:SbsSW.SwiPlCs.PlQuery</codeEntityReference> is the key to ask SWI-Prolog for proofs or solutions.
+				</para>
+				<para>
+					The <codeEntityReference>T:SbsSW.SwiPlCs.PlTerm</codeEntityReference> struct plays a central role in conversion and operating on Prolog data.
+				</para>
+			</content>
+		</section>
+
+
+		<section address="ProgrammingTips">
+			<title>Programming tips</title>
+			<content>
+				<para>
+					I strongly recomanate to use <codeEntityReference>T:SbsSW.SwiPlCs.PlQuery</codeEntityReference> in a
+					<externalLink>
+						<linkText>using statment</linkText>
+						<linkUri>http://msdn.microsoft.com/library/zhdeatwt.aspx</linkUri>
+					</externalLink>
+					like in the sample program above.
+				</para>
+				<para>
+					An alternitive is to call <codeEntityReference>M:SbsSW.SwiPlCs.PlQuery.Dispose</codeEntityReference>
+					explicitly like in the sample below.
+				</para>
+				<code source="..\..\TestSwiPl\PlQuery.cs"  region="explicit_query_dispose_doc"  language="cs" />
+				<para>
+					Note that access to the query Variables is impossible after Dispose().
+				</para>
+				<para>
+					In the samples you find often something like:
+					<codeInline>
+						Assert.AreEqual(2, new PlTerm("a(a, b)").Arity);
+					</codeInline>
+					The Method Assert.AreEqual comes from the
+					<externalLink>
+						<linkText>UnitTesting namespace</linkText>
+						<linkUri>http://msdn.microsoft.com/de-de/library/microsoft.visualstudio.testtools.unittesting.aspx</linkUri>
+					</externalLink>
+					and can be ignored in your program. It is only there because the samples in the documentation are directly
+					generated from the unit tests.
+				</para>
+			</content>
+		</section>
+
+		<section address="KnownBugs">
+			<title>Known Bugs</title>
+			<content>
+				<para>
+					<codeEntityReference>M:SbsSW.SwiPlCs.PlEngine.Initialize(System.String[])</codeEntityReference>
+					work *not* as expected if there are e.g. German umlauts in the parameters
+					e.g. in the path or filename for a qlf file ( switch -x ) 
+					See marshalling in the source NativeMethods.cs
+				</para>
+			</content>
+		</section>
+
+
+		<relatedTopics>
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

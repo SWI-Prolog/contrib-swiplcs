@@ -33,15 +33,35 @@ namespace TestSwiPl
     /// get the values of a Plrolog list ( PlTail )
 	/// </summary>
 
+
+
+
     [TestClass]
     public class TestLinqPlTail : BasePlInit
 	{
+        [TestMethod]
+        public void xxxxxx()
+        {
+            string[] mm = { "aa", "bb", "cc" };
+            var q = new PlQuery("member(A, [aa, bb, cc])");
+            Assert.AreEqual(3, q.SolutionVariables.Count());
+            int i = 0;
+            foreach (PlQueryVariables s in q.SolutionVariables)
+            {
+                Assert.AreEqual(mm[i++], s["A"].ToString());
+            }
 
-	    [TestMethod]
-	    public void xxx()
-	    {
-            Assert.AreEqual(2, new PlTerm("a(a, b)").Arity);
+            i = 0;
+            foreach (PlQueryVariables s in q.SolutionVariables)
+            {
+                Assert.AreEqual(mm[i++], s["A"].ToString());
+            }
+
+            var result = from svs in q.ToList() select svs["A"].ToString();
+            if(result.Any() )
+            CollectionAssert.AreEqual(mm, result.ToList());
         }
+
 
 	    #region query_prologlist_PlTail_with_Linq_doc
         [TestMethod]

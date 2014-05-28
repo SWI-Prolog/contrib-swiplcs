@@ -149,11 +149,12 @@
   <ItemGroup>
     <Content Include="ChangeLog.txt" />
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
-    <Content Include="Help\concept.xml" />
     <Content Include="Help\Images\Intelligence.png" />
     <Content Include="Help\Images\Tooltip.png" />
-    <Content Include="Help\introduction.htm" />
     <Content Include="Help\SwiCsPl.shfbproj" />
+    <None Include="Help\Content Layout.content" />
+    <None Include="Help\introduction.aml" />
+    <None Include="Help\PowerShell.aml" />
     <None Include="README" />
     <Content Include="Readme_publish.txt" />
     <Content Include="TODO.txt" />
@@ -165,7 +166,6 @@
     <None Include="CodeAnalyzeRuleSet.ruleset">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Help\sitemap.sitemap" />
     <None Include="Help\SwiCsPl.shfb" />
   </ItemGroup>
   <ItemGroup>
