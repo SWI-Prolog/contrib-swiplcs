@@ -142,12 +142,12 @@ namespace SbsSW.SwiPlCs
             // to calculate to following values use the C++ Project CalcStreamSize
 #if _PL_X64
 #warning _PL_X64 is defined
-            const int sizeOfIostream = 232;
+            const int sizeOfIostream = 256;
             const int offsetToPoninterOfIofunctions = 104;
             const int sizeOfPointer = 8;
 #else
 #warning _PL_X64 is NOT defined
-            const int sizeOfIostream = 144;
+            const int sizeOfIostream = 160;
             const int offsetToPoninterOfIofunctions = 72;
             const int sizeOfPointer = 4;
 #endif
