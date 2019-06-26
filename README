@@ -1,4 +1,10 @@
-﻿
+WHAT'S NEW
+==========
+ 
+ - SwiPICs updated to support SWI-Prolog Version 8.0.3-1 32bit and 64bit
+
+------------------------------------------------------------------------------
+
 			An interface from .Net languages to SWI-Prolog
 
 This library is a .Net (CSharp) interface to SWI-Prolog. The described  
